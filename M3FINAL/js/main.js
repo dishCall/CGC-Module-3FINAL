@@ -30,6 +30,8 @@ Create A box cloud
 Add Snow Particle. Use White color
 
 */
+
+//Update Second Laters once all object is finish
 function firstLayer(height,weight,depth){
 const waterTexture = new THREE.TextureLoader().load("./assets/textures/water.jpg")
 const lowerLayerGeometry = new THREE.BoxGeometry(height,weight,depth);
@@ -57,6 +59,7 @@ function secondLayerLeft(){
 
 function grass(height,weight,depth){
   //add grass texture
+  //Use Road Bump on Road.
   const grassGeometry = new THREE.BoxGeometry(height,weight,depth);
   const grassMaterial = new THREE.MeshBasicMaterial({color: 'green'});
   const grass = new THREE.Mesh(grassGeometry,grassMaterial);
@@ -73,7 +76,13 @@ function road(height,weight,depth){
   const road = new THREE.Mesh(roadGeometry,roadMaterial);
   return road;
 }
-
+function roadBump(height,weight,depth){
+  //add light stone brick color
+  const roadBumpGeometry = new THREE.BoxGeometry(height,weight,depth);
+  const roadBumpMaterial = new THREE.MeshBasicMaterial({color: 'gray'})
+  const roadBump = new THREE.Mesh(roadBumpGeometry,roadBumpMaterial);
+  return roadBump;
+}
 function fence(height,weight,depth){
   //add light wood texture
   const fenceGeometry = new THREE.BoxGeometry(height,weight,depth);
@@ -144,20 +153,28 @@ function roadBuild(){
   grayGrass.position.z = 6.5;
   grayGrass.position.y = -1.5;
   grayGrass.rotation.y = 1.4;
+  const roadBumpMiddleY = roadBump(5,5,10);
+
+  roadBumpMiddleY.position.x = -35;
+  roadBumpMiddleY.position.z = 3;
+  roadBumpMiddleY.position.y = -1.4;
+  roadBumpMiddleY.rotation.y = 1.5;
   roads.add(roadLast);
   roads.add(roadMiddle);
   roads.add(roadRightY);
   roads.add(roadLeftY);
   roads.add(grayGrass);
+  roads.add(roadBumpMiddleY);
   roads.position.y = 19;
-  roads.position.x = 5;
+  roads.position.x = 8;
+  roads.position.z = 2;
   scene.add(roads);
 }
 function fenceBuild(){
   const fenceGroup = new THREE.Group();
   const fenceNearHouse = fence(30,8,1);
-  fenceNearHouse.position.x =-57;
-  fenceNearHouse.position.z =5;
+  fenceNearHouse.position.x =-55;
+  fenceNearHouse.position.z =7;
   fenceNearHouse.rotation.y = 3.04;
 
   const fenceNearSmallHouse = fence(9,8,1);
@@ -177,12 +194,12 @@ function fenceBuild(){
   fenceSmallDistanceHouse.rotation.y = 2.5;
 
   const fenceNearBigHouse = fence(20,8,1);
-  fenceNearBigHouse.position.x = -40;
-  fenceNearBigHouse.position.z = -37;
+  fenceNearBigHouse.position.x = -37;
+  fenceNearBigHouse.position.z = -36;
   fenceNearBigHouse.rotation.y = -1.6;
   const fenceNearBigTree = fence(20,8,1);
-  fenceNearBigTree.position.x = -24;
-  fenceNearBigTree.position.z = -37;
+  fenceNearBigTree.position.x = -21;
+  fenceNearBigTree.position.z = -35;
   fenceNearBigTree.rotation.y = -1.6;
   fenceGroup.add(fenceNearHouse);
   fenceGroup.add(fenceNearSmallHouse);
