@@ -160,14 +160,25 @@ function fenceBuild(){
   fenceNearSmallHouseSecond.rotation.y = 2.47;
 
 
-  const fenceSmallDistanceHouse = fence(10 ,8,1);
+  const fenceSmallDistanceHouse = fence(10,8,1);
   fenceSmallDistanceHouse.position.x = -23;
   fenceSmallDistanceHouse.position.z = 17;
   fenceSmallDistanceHouse.rotation.y = 2.5;
+
+  const fenceNearBigHouse = fence(20,8,1);
+  fenceNearBigHouse.position.x = -40;
+  fenceNearBigHouse.position.z = -37;
+  fenceNearBigHouse.rotation.y = -1.6;
+  const fenceNearBigTree = fence(20,8,1);
+  fenceNearBigTree.position.x = -24;
+  fenceNearBigTree.position.z = -37;
+  fenceNearBigTree.rotation.y = -1.6;
   fenceGroup.add(fenceNearHouse);
   fenceGroup.add(fenceNearSmallHouse);
   fenceGroup.add(fenceNearSmallHouseSecond);
   fenceGroup.add(fenceSmallDistanceHouse);
+  fenceGroup.add(fenceNearBigHouse);
+  fenceGroup.add(fenceNearBigTree);
   scene.add(fenceGroup);
   fenceGroup.position.y = 19;
 }
@@ -232,21 +243,21 @@ function house(){
   windowSecondFloor.rotation.y = -2.2;
   windowSecondFloor.rotation.z = 1;
 
-  const trashBoxGeometry = new THREE.BoxGeometry(5,5,5);
-  const trashBoxMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
-  const trashBox = new THREE.Mesh(trashBoxGeometry,trashBoxMaterial);
-  trashBox.position.y = 1;
-  trashBox.position.x = -3;
-  trashBox.position.z = 8.2;
-  trashBox.rotation.y = -2.2;
+  const doorBoxGeometry = new THREE.BoxGeometry(5,5,5);
+  const doorBoxMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
+  const doorBox = new THREE.Mesh(doorBoxGeometry,doorBoxMaterial);
+  doorBox.position.y = 1;
+  doorBox.position.x = -3;
+  doorBox.position.z = 8.2;
+  doorBox.rotation.y = -2.2;
 
-  const trashBoxHeadGeometry = new THREE.BoxGeometry(5,1,5);
-  const trashBoxHeadMaterial = new THREE.MeshBasicMaterial({color: 'green'});
-  const trashBoxHead = new THREE.Mesh(trashBoxHeadGeometry,trashBoxHeadMaterial);
-  trashBoxHead.position.y = 4;
-  trashBoxHead.position.x = -3;
-  trashBoxHead.position.z = 8.2;
-  trashBoxHead.rotation.y = -2.2;
+  const doorBoxHeadGeometry = new THREE.BoxGeometry(5,1,5);
+  const doorBoxHeadMaterial = new THREE.MeshBasicMaterial({color: 'green'});
+  const doorBoxHead = new THREE.Mesh(doorBoxHeadGeometry,doorBoxHeadMaterial);
+  doorBoxHead.position.y = 4;
+  doorBoxHead.position.x = -3;
+  doorBoxHead.position.z = 8.2;
+  doorBoxHead.rotation.y = -2.2;
 
 
   //add  light here
@@ -370,8 +381,8 @@ function house(){
   houseGroup.add(windowWall);
   houseGroup.add(door);
   houseGroup.add(windowSecondFloor);
-  houseGroup.add(trashBox);
-  houseGroup.add(trashBoxHead);
+  houseGroup.add(doorBox);
+  houseGroup.add(doorBoxHead);
   houseGroup.add(windowsLightOn)
   houseGroup.add(secondWindowsLightOn);
   houseGroup.add(windowsLightOnBorder);
