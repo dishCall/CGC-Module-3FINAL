@@ -73,6 +73,7 @@ function road(height,weight,depth){
   const road = new THREE.Mesh(roadGeometry,roadMaterial);
   return road;
 }
+
 function fence(height,weight,depth){
   //add light wood texture
   const fenceGeometry = new THREE.BoxGeometry(height,weight,depth);
@@ -134,10 +135,20 @@ function roadBuild(){
   roadLast.position.x = -37;
   roadLast.position.z = -36;
   roadLast.rotation.y = 3.1;
+
+  //@add gray grass texture
+  const grayGrassGeometry = new THREE.BoxGeometry(5,5,5);
+  const grayGrassMaterial = new THREE.MeshBasicMaterial({color:'gray'});
+  const grayGrass = new THREE.Mesh(grayGrassGeometry,grayGrassMaterial);
+  grayGrass.position.x = -47;
+  grayGrass.position.z = 6.5;
+  grayGrass.position.y = -1.5;
+  grayGrass.rotation.y = 1.4;
   roads.add(roadLast);
   roads.add(roadMiddle);
   roads.add(roadRightY);
   roads.add(roadLeftY);
+  roads.add(grayGrass);
   roads.position.y = 19;
   roads.position.x = 5;
   scene.add(roads);
