@@ -159,6 +159,7 @@ function roadBuild(){
   roadBumpMiddleY.position.z = 3;
   roadBumpMiddleY.position.y = -1.4;
   roadBumpMiddleY.rotation.y = 1.5;
+  
   roads.add(roadLast);
   roads.add(roadMiddle);
   roads.add(roadRightY);
