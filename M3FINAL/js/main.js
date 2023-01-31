@@ -17,7 +17,7 @@ secondLayerLeft();
 secondLayer(60,20,100);
 grass(128,1,100);
 roadBuild();
-
+fenceBuild();
 /*
 @Goal When all Object is Added
 Change All MeshBasicMaterial to MeshDepthMaterial
@@ -70,6 +70,7 @@ function road(height,weight,depth){
   return road;
 }
 function fence(height,weight,depth){
+  //add light wood texture
   const fenceGeometry = new THREE.BoxGeometry(height,weight,depth);
   const fenceMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
   const fence = new THREE.Mesh(fenceGeometry,fenceMaterial);
@@ -139,10 +140,34 @@ function roadBuild(){
 }
 function fenceBuild(){
   const fenceGroup = new THREE.Group();
+  const fenceNearHouse = fence(30,8,1);
+  fenceNearHouse.position.x =-57;
+  fenceNearHouse.position.z =5;
+  fenceNearHouse.rotation.y = 3.04;
 
-  
+  const fenceNearSmallHouse = fence(9,8,1);
+  fenceNearSmallHouse.position.x = -14;
+  fenceNearSmallHouse.position.z = 5;
+  fenceNearSmallHouse.rotation.y = 2.5;
+
+  const fenceNearSmallHouseSecond = fence(9,8,1);
+  fenceNearSmallHouseSecond.position.x = -1;
+  fenceNearSmallHouseSecond.position.z = 16;
+  fenceNearSmallHouseSecond.rotation.y = 2.47;
+
+
+  const fenceSmallDistanceHouse = fence(10 ,8,1);
+  fenceSmallDistanceHouse.position.x = -23;
+  fenceSmallDistanceHouse.position.z = 17;
+  fenceSmallDistanceHouse.rotation.y = 2.5;
+  fenceGroup.add(fenceNearHouse);
+  fenceGroup.add(fenceNearSmallHouse);
+  fenceGroup.add(fenceNearSmallHouseSecond);
+  fenceGroup.add(fenceSmallDistanceHouse);
   scene.add(fenceGroup);
+  fenceGroup.position.y = 19;
 }
+
 function house(){
   const houseGroup = new THREE.Group();
 
@@ -271,6 +296,8 @@ function house(){
   windowSecondFloorNoLightSide.position.z = -4;
   windowSecondFloorNoLightSide.rotation.y = -3.8;
   windowSecondFloorNoLightSide.rotation.z = 2.2;
+
+  //NOT WORKING NEXT FIX
   const secondFloorWindowFrontLightsOff = windowsnoLights(3,2,1);
   secondFloorWindowFrontLightsOff.y = 4;
   secondFloorWindowFrontLightsOff.z = -4;
@@ -311,7 +338,7 @@ function house(){
   foundationSecondFloorBackLeft.position.x = -2;
   foundationSecondFloorBackLeft.position.z = -12;
 
-  //door
+  //door  add door texture
   const doorGeometry = new THREE.BoxGeometry(2.5,5,2);
   const doorMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
   const door = new THREE.Mesh(doorGeometry,doorMaterial);
