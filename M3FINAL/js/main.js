@@ -97,6 +97,12 @@ function treeWood(height,weight,depth){
   const treeWood = new THREE.Mesh(treeWoodGeometry,treeWoodMaterial);
   return treeWood;
 }
+function treeWoodLeaf(height,weight,depth){
+  const treeWoodLeafGeometry = new THREE.BoxGeometry(height,weight,depth);
+  const treeWoodLeafMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
+  const treeWoodLeaf = new THREE.Mesh(treeWoodLeafGeometry,treeWoodLeafMaterial);
+  return treeWoodLeaf;
+}
 function houseFoundation(){
   const stoneTexture = new THREE.TextureLoader().load("./assets/textures/foundation-stone.jpg")
   const foundationGeometry = new THREE.CapsuleGeometry(1,7,1,4);
@@ -143,8 +149,20 @@ function treeBuild(){
   treeBehindSmallHousePart.position.z = -30;
   treeBehindSmallHousePart.position.y = 15;
 
+  const treeBehindSmallHouseLeaf = treeWoodLeaf(25,10,25);
+  treeBehindSmallHouseLeaf.position.x = -10;
+  treeBehindSmallHouseLeaf.position.z = -30;
+  treeBehindSmallHouseLeaf.position.y = 50;
+
+  const treeBehindSmallHouseLeafSecond = treeWoodLeaf(15,10,15);
+  treeBehindSmallHouseLeafSecond.position.x = -20;
+  treeBehindSmallHouseLeafSecond.position.z = -30;
+  treeBehindSmallHouseLeafSecond.position.y = 55;
+
   treeBuilding.add(treeBehindSmallHouse);
   treeBuilding.add(treeBehindSmallHousePart);
+  treeBuilding.add(treeBehindSmallHouseLeaf);
+  treeBuilding.add(treeBehindSmallHouseLeafSecond);
   scene.add(treeBuilding);
   treeBuilding.position.y = 19;
 }
