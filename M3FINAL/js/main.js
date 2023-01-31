@@ -18,6 +18,7 @@ secondLayer(60,20,100);
 grass(128,1,100);
 roadBuild();
 fenceBuild();
+treeBuild();
 /*
 
 @Goal When all Object is Added
@@ -90,7 +91,12 @@ function fence(height,weight,depth){
   const fence = new THREE.Mesh(fenceGeometry,fenceMaterial);
   return fence;
 }
-
+function treeWood(height,weight,depth){
+  const treeWoodGeometry = new THREE.BoxGeometry(height,weight,depth);
+  const treeWoodMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
+  const treeWood = new THREE.Mesh(treeWoodGeometry,treeWoodMaterial);
+  return treeWood;
+}
 function houseFoundation(){
   const stoneTexture = new THREE.TextureLoader().load("./assets/textures/foundation-stone.jpg")
   const foundationGeometry = new THREE.CapsuleGeometry(1,7,1,4);
@@ -123,6 +129,24 @@ function windowsnoLights(height,weight,depth){
   const windowNoLightsMaterial = new THREE.MeshBasicMaterial({color: 'black'});
   const windowsnoLights = new THREE.Mesh(windowNoLightsGeometry,windowNoLightsMaterial);
   return windowsnoLights;
+}
+function treeBuild(){
+  const treeBuilding = new THREE.Group();
+
+  const treeBehindSmallHouse = treeWood(5,100,8);
+  treeBehindSmallHouse.position.x = -10;
+  treeBehindSmallHouse.position.z = -30;
+  treeBehindSmallHouse.rotation.y = 1;
+
+  const treeBehindSmallHousePart = treeWood(5,30,10)
+  treeBehindSmallHousePart.position.x = -10;
+  treeBehindSmallHousePart.position.z = -30;
+  treeBehindSmallHousePart.position.y = 15;
+
+  treeBuilding.add(treeBehindSmallHouse);
+  treeBuilding.add(treeBehindSmallHousePart);
+  scene.add(treeBuilding);
+  treeBuilding.position.y = 19;
 }
 function roadBuild(){
   const roads = new THREE.Group();
@@ -189,7 +213,7 @@ function fenceBuild(){
   fenceNearSmallHouseSecond.rotation.y = 2.47;
 
 
-  const fenceSmallDistanceHouse = fence(10,8,1);
+  const fenceSmallDistanceHouse = fence(15,8,1);
   fenceSmallDistanceHouse.position.x = -23;
   fenceSmallDistanceHouse.position.z = 17;
   fenceSmallDistanceHouse.rotation.y = 2.5;
@@ -341,7 +365,7 @@ function house(){
   windowSecondFloorNoLightSide.rotation.y = -3.8;
   windowSecondFloorNoLightSide.rotation.z = 2.2;
 
-  //NOT WORKING NEXT FIX
+  //NOT WORKING NEED FIX
   const secondFloorWindowFrontLightsOff = windowsnoLights(3,2,1);
   secondFloorWindowFrontLightsOff.y = 4;
   secondFloorWindowFrontLightsOff.z = -4;
