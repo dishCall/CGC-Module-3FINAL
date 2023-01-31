@@ -103,6 +103,12 @@ function treeWoodLeaf(height,weight,depth){
   const treeWoodLeaf = new THREE.Mesh(treeWoodLeafGeometry,treeWoodLeafMaterial);
   return treeWoodLeaf;
 }
+function treeWoodLeafSnow(height,weight,depth){
+  const treeWoodLeafSnowGeometry = new THREE.BoxGeometry(height,weight,depth);
+  const treeWoodLeafSnowMaterial = new THREE.MeshBasicMaterial({color:'white'});
+  const treeWoodLeafSnow = new THREE.Mesh(treeWoodLeafSnowGeometry,treeWoodLeafSnowMaterial);
+  return treeWoodLeafSnow;
+}
 function houseFoundation(){
   const stoneTexture = new THREE.TextureLoader().load("./assets/textures/foundation-stone.jpg")
   const foundationGeometry = new THREE.CapsuleGeometry(1,7,1,4);
@@ -139,32 +145,69 @@ function windowsnoLights(height,weight,depth){
 function treeBuild(){
   const treeBuilding = new THREE.Group();
 
-  const treeBehindSmallHouse = treeWood(5,100,8);
+  const treeBehindSmallHouse = treeWood(5,80,8);
   treeBehindSmallHouse.position.x = -10;
   treeBehindSmallHouse.position.z = -30;
-  treeBehindSmallHouse.rotation.y = 1;
+  treeBehindSmallHouse.rotation.y = 2;
 
   const treeBehindSmallHousePart = treeWood(5,30,10)
   treeBehindSmallHousePart.position.x = -10;
   treeBehindSmallHousePart.position.z = -30;
-  treeBehindSmallHousePart.position.y = 15;
+  treeBehindSmallHousePart.position.y = 10;
 
   const treeBehindSmallHouseLeaf = treeWoodLeaf(25,10,25);
   treeBehindSmallHouseLeaf.position.x = -10;
   treeBehindSmallHouseLeaf.position.z = -30;
-  treeBehindSmallHouseLeaf.position.y = 50;
+  treeBehindSmallHouseLeaf.position.y = 40;
 
-  const treeBehindSmallHouseLeafSecond = treeWoodLeaf(15,10,15);
-  treeBehindSmallHouseLeafSecond.position.x = -20;
-  treeBehindSmallHouseLeafSecond.position.z = -30;
-  treeBehindSmallHouseLeafSecond.position.y = 55;
+  const treeBehindSmallHouseLeafSnowSecond = treeWoodLeafSnow(25,10,25);
+  treeBehindSmallHouseLeafSnowSecond.position.x = -20;
+  treeBehindSmallHouseLeafSnowSecond.position.z = -30;
+  treeBehindSmallHouseLeafSnowSecond.position.y = 42;
+  treeBehindSmallHouseLeafSnowSecond.rotation.y = 2;
+  const treeBehindSmallHouseLeafThird = treeWoodLeaf(25,10,30);
+  treeBehindSmallHouseLeafThird.position.x = 2;
+  treeBehindSmallHouseLeafThird.position.z = -30;
+  treeBehindSmallHouseLeafThird.position.y = 43;
+  treeBehindSmallHouseLeafThird.rotation.y = 1;
 
-  treeBuilding.add(treeBehindSmallHouse);
+
+  const treeBehindBigHouse = treeWood(5,100,8);
+  treeBehindBigHouse.position.x = -50;
+  treeBehindBigHouse.position.z = -32;
+  treeBehindBigHouse.rotation.y = 1;
+  const treeBehindBigHousePart = treeWood(5,50,10);
+  treeBehindBigHousePart.position.x = -50;
+  treeBehindBigHousePart.position.z = -32;
+  treeBehindBigHousePart.rotation.y = 1;
+  const treeBehindBigHousePartLeaf = treeWoodLeaf(25,10,25);
+  treeBehindBigHousePartLeaf.position.x = -47;
+  treeBehindBigHousePartLeaf.position.z = -30;
+  treeBehindBigHousePartLeaf.position.y = 50;
+  treeBehindBigHousePartLeaf.rotation.y =1;
+  const treeBehindBigHousePartLeafSecond = treeWoodLeaf(25,10,25);
+  treeBehindBigHousePartLeafSecond.position.x = -51;
+  treeBehindBigHousePartLeafSecond.position.z = -40;
+  treeBehindBigHousePartLeafSecond.position.y = 50;
+  treeBehindBigHousePartLeafSecond.rotation.y = 1;
+  const treeBehindBigHousePartLeafSnow = treeWoodLeafSnow(25,10,25); 
+  treeBehindBigHousePartLeafSnow.position.x = -60;
+  treeBehindBigHousePartLeafSnow.position.z = -35;
+  treeBehindBigHousePartLeafSnow.position.y = 52;
+  treeBehindBigHousePartLeafSnow.rotation.y = 1;
+  treeBuilding.add(treeBehindSmallHouseLeafThird);
+  treeBuilding.add(treeBehindBigHouse);
   treeBuilding.add(treeBehindSmallHousePart);
+  treeBuilding.add(treeBehindSmallHouse);
   treeBuilding.add(treeBehindSmallHouseLeaf);
-  treeBuilding.add(treeBehindSmallHouseLeafSecond);
+  treeBuilding.add(treeBehindSmallHouseLeafSnowSecond);
+  treeBuilding.add(treeBehindBigHousePart);
+  treeBuilding.add(treeBehindBigHousePartLeaf);
+  treeBuilding.add(treeBehindBigHousePartLeafSecond);
+  treeBuilding.add(treeBehindBigHousePartLeafSnow);
   scene.add(treeBuilding);
   treeBuilding.position.y = 19;
+  
 }
 function roadBuild(){
   const roads = new THREE.Group();
