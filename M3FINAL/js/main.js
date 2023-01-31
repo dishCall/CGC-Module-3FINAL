@@ -10,10 +10,22 @@ const controls = new OrbitControls( camera, renderer.domElement );
 //controls.update() must be called after any manual changes to the camera's transform
 camera.position.set( 0, 20, 100 );
 controls.update();
-
+//camera.lookAt(1,20,1);
 firstLayer(500,1,500);
 house();
-//secondLayer(240,50,240);
+secondLayerLeft();
+secondLayer(60,20,100);
+grass(128,1,100);
+roadBuild();
+
+/*
+@Goal When all Object is Added
+Change All MeshBasicMaterial to MeshDepthMaterial
+Add Pink Wood Texture On walls
+Add Dark Green Wood Textutre on roofs.
+First House
+Add Lights on windows();
+*/
 function firstLayer(height,weight,depth){
 const waterTexture = new THREE.TextureLoader().load("./assets/textures/water.jpg")
 const lowerLayerGeometry = new THREE.BoxGeometry(height,weight,depth);
@@ -23,14 +35,37 @@ scene.add(lowerLayer);
 lowerLayer.position.z = 5;
 return lowerLayer;
 }
-/*function secondLayer(height,weight,depth){
+function secondLayer(height,weight,depth){
 const SecondLayerGeometry = new THREE.BoxGeometry(height,weight,depth);
 const SecondLayerMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
 const secondLayer = new THREE.Mesh(SecondLayerGeometry,SecondLayerMaterial);
 scene.add(secondLayer);
 secondLayer.position.y = 8;
 return secondLayer;
-}*/
+}
+function secondLayerLeft(){
+  const secondLayerLeftPart = secondLayer(60,20,100);
+  secondLayerLeftPart.position.x = -60;
+  return secondLayerLeftPart;
+}
+function grass(height,weight,depth){
+  //add grass texture
+  const grassGeometry = new THREE.BoxGeometry(height,weight,depth);
+  const grassMaterial = new THREE.MeshBasicMaterial({color: 'green'});
+  const grass = new THREE.Mesh(grassGeometry,grassMaterial);
+  scene.add(grass);
+  grass.position.y = 18;
+  grass.position.x = -35;
+  return grass;
+}
+function road(height,weight,depth){
+  //add light texture brick
+  const roadGeometry = new THREE.BoxGeometry(height,weight,depth);
+  const roadMaterial = new THREE.MeshBasicMaterial({color: 'white'});
+  const road = new THREE.Mesh(roadGeometry,roadMaterial);
+  return road;
+}
+
 function houseFoundation(){
   const stoneTexture = new THREE.TextureLoader().load("./assets/textures/foundation-stone.jpg")
   const foundationGeometry = new THREE.CapsuleGeometry(1,7,1,4);
@@ -49,7 +84,6 @@ function windows(height,weight,depth){
   const windowsGeometry = new THREE.BoxGeometry(height,weight,depth);
   const windowsMaterial = new THREE.MeshBasicMaterial({color: 'yellow'});
   const windows = new THREE.Mesh(windowsGeometry,windowsMaterial);
-
   return windows;
 
 }
@@ -65,6 +99,35 @@ function windowsnoLights(height,weight,depth){
   const windowsnoLights = new THREE.Mesh(windowNoLightsGeometry,windowNoLightsMaterial);
   return windowsnoLights;
 }
+function roadBuild(){
+  const roads = new THREE.Group();
+  //h w d
+  const roadLeftY = road(15,1,50);
+  roadLeftY.position.x = -22;
+  roadLeftY.position.z = 12;
+  roadLeftY.rotation.y = 0.9;
+  const roadRightY = road(15,1,50);
+  roadRightY.position.x = -55;
+  roadRightY.position.z = -2;
+  roadRightY.rotation.y = 4.6;
+  const roadMiddle = road(15,1,22);
+  roadMiddle.position.x = -37;
+  roadMiddle.position.z = -15;
+  roadMiddle.rotation.y = 3.2;
+
+  const roadLast = road(15,1,23);
+  roadLast.position.x = -37;
+  roadLast.position.z = -36;
+  roadLast.rotation.y = 3.1;
+  roads.add(roadLast);
+  roads.add(roadMiddle);
+  roads.add(roadRightY);
+  roads.add(roadLeftY);
+  roads.position.y = 19;
+  roads.position.x = 5;
+  scene.add(roads);
+}
+
 function house(){
   const houseGroup = new THREE.Group();
 
@@ -97,7 +160,7 @@ function house(){
   roofUpper.rotation.y = 3.1;
   roofUpper.rotation.x = 240.35;
   roofUpper.rotation.z = 0.9;
-  //roofUpper.scale.set(1,1,1);
+
 
   const roofWallSenGeometry = new THREE.CylinderGeometry(8,8,11,3,1);
   const roofWallSenMaterial = new THREE.MeshBasicMaterial({color: 'white'});
@@ -141,6 +204,9 @@ function house(){
   trashBoxHead.position.z = 8.2;
   trashBoxHead.rotation.y = -2.2;
 
+
+  //add  light here
+
   const windowsLightOn = windows(1,3,3);
   const windowsLightOnBorder = windowsBorders(1,4,4);
   windowsLightOn.position.y = 4;
@@ -155,6 +221,8 @@ function house(){
   const secondWindowsLightOn = windows(3,2,1);
   const secondWindowsLightOnBorder = windowsBorders(4,3,1);
 
+  //add LIGHT HERE
+
   secondWindowsLightOn.position.y = 3;
   secondWindowsLightOn.position.x = 8;
   secondWindowsLightOn.position.z = 2.5;
@@ -166,10 +234,32 @@ function house(){
   secondWindowsLightOnBorder.rotation.y = -2.2;
 
   const firstFloorWindowLightsOff = windowsnoLights(3,2,1);
-  firstFloorWindowLightsOff.position.y = 3;
-  firstFloorWindowLightsOff.position.x = -11;
-  firstFloorWindowLightsOff.position.z = 1;
+  firstFloorWindowLightsOff.position.y = 2;
+  firstFloorWindowLightsOff.position.x = -6.5; // -6.5;
+  firstFloorWindowLightsOff.position.z = -4;
   firstFloorWindowLightsOff.rotation.y = -2.2;
+
+  const windowFirstFloorLightsOffGeometry = new THREE.BoxGeometry(3,1,8);
+  const windowFirstFloorLightsOffMaterial = new THREE.MeshBasicMaterial({color: 'blue'});
+  const windowFirstFloorLightsOff = new THREE.Mesh(windowFirstFloorLightsOffGeometry,windowFirstFloorLightsOffMaterial);
+  windowFirstFloorLightsOff.position.y = 4;
+  windowFirstFloorLightsOff.position.x = -7;
+  windowFirstFloorLightsOff.position.z = -5;
+  windowFirstFloorLightsOff.rotation.y = -3.8;
+  windowFirstFloorLightsOff.rotation.z = 2.2;
+  
+  const windowSecondFloorNoLightSideGeometry = new THREE.BoxGeometry(3,1,8);
+  const windowSecondFloorNoLightSideMaterial = new THREE.MeshBasicMaterial({color: 'blue'});
+  const windowSecondFloorNoLightSide = new THREE.Mesh(windowSecondFloorNoLightSideGeometry,windowSecondFloorNoLightSideMaterial);
+  windowSecondFloorNoLightSide.position.y = 15;
+  windowSecondFloorNoLightSide.position.x = -6;
+  windowSecondFloorNoLightSide.position.z = -4;
+  windowSecondFloorNoLightSide.rotation.y = -3.8;
+  windowSecondFloorNoLightSide.rotation.z = 2.2;
+  const secondFloorWindowFrontLightsOff = windowsnoLights(3,2,1);
+  secondFloorWindowFrontLightsOff.y = 4;
+  secondFloorWindowFrontLightsOff.z = -4;
+  secondFloorWindowFrontLightsOff.x = -6;
 
   const foundationfirstFloorFrontRight = houseFoundation();
   foundationfirstFloorFrontRight.position.y = 3.6;
@@ -206,21 +296,33 @@ function house(){
   foundationSecondFloorBackLeft.position.x = -2;
   foundationSecondFloorBackLeft.position.z = -12;
 
+  //door
+  const doorGeometry = new THREE.BoxGeometry(2.5,5,2);
+  const doorMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
+  const door = new THREE.Mesh(doorGeometry,doorMaterial);
+  door.position.y = 1;
+  door.position.x = -4.9;
+  door.position.z = 7.5;
+  door.rotation.y = -2.2;
+  //door.rotation.x = -1.9;
+
+  houseGroup.add(windowFirstFloorLightsOff);
   houseGroup.add(foundationSecondFloorBackLeft);
   houseGroup.add(foundationSecondFloorBackRight);
   houseGroup.add(foundationSecondFloorFrontLeft);
   houseGroup.add(foundationSecondFloorFrontRight);
   houseGroup.add(foundationfirstFloorBackRight);
-  houseGroup.add(foundationfirstFloorBackLeft);
-  houseGroup.add(foundationfirstFloorFrontLeft);
-  houseGroup.add(foundationfirstFloorFrontRight);
   houseGroup.add(houseMiddle);
   houseGroup.add(houseBody);
   houseGroup.add(roofLower);
   houseGroup.add(roofUpper);
   houseGroup.add(roofMiddle);
+  houseGroup.add(foundationfirstFloorFrontLeft);
+  houseGroup.add(foundationfirstFloorFrontRight);
+  houseGroup.add(foundationfirstFloorBackLeft);
   houseGroup.add(roofWallSen);
   houseGroup.add(windowWall);
+  houseGroup.add(door);
   houseGroup.add(windowSecondFloor);
   houseGroup.add(trashBox);
   houseGroup.add(trashBoxHead);
@@ -229,14 +331,12 @@ function house(){
   houseGroup.add(windowsLightOnBorder);
   houseGroup.add(secondWindowsLightOnBorder);
   houseGroup.add(firstFloorWindowLightsOff);
-  houseGroup.position.y = 15;
-  houseGroup.rotation.y = 3;
+  houseGroup.add(windowSecondFloorNoLightSide)
+  houseGroup.add(secondFloorWindowFrontLightsOff);
+  houseGroup.position.y = 20;
+  //houseGroup.rotation.y = 3;
   //houseGroup.scale.set(2,2,2);
   scene.add(houseGroup);
-
-
-  return houseBody;
-
 }
 
 
