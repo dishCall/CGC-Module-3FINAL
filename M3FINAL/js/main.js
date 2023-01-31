@@ -35,6 +35,7 @@ scene.add(lowerLayer);
 lowerLayer.position.z = 5;
 return lowerLayer;
 }
+
 function secondLayer(height,weight,depth){
 const SecondLayerGeometry = new THREE.BoxGeometry(height,weight,depth);
 const SecondLayerMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
@@ -43,11 +44,13 @@ scene.add(secondLayer);
 secondLayer.position.y = 8;
 return secondLayer;
 }
+
 function secondLayerLeft(){
   const secondLayerLeftPart = secondLayer(60,20,100);
   secondLayerLeftPart.position.x = -60;
   return secondLayerLeftPart;
 }
+
 function grass(height,weight,depth){
   //add grass texture
   const grassGeometry = new THREE.BoxGeometry(height,weight,depth);
@@ -58,12 +61,19 @@ function grass(height,weight,depth){
   grass.position.x = -35;
   return grass;
 }
+
 function road(height,weight,depth){
   //add light texture brick
   const roadGeometry = new THREE.BoxGeometry(height,weight,depth);
   const roadMaterial = new THREE.MeshBasicMaterial({color: 'white'});
   const road = new THREE.Mesh(roadGeometry,roadMaterial);
   return road;
+}
+function fence(height,weight,depth){
+  const fenceGeometry = new THREE.BoxGeometry(height,weight,depth);
+  const fenceMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
+  const fence = new THREE.Mesh(fenceGeometry,fenceMaterial);
+  return fence;
 }
 
 function houseFoundation(){
@@ -127,7 +137,12 @@ function roadBuild(){
   roads.position.x = 5;
   scene.add(roads);
 }
+function fenceBuild(){
+  const fenceGroup = new THREE.Group();
 
+  
+  scene.add(fenceGroup);
+}
 function house(){
   const houseGroup = new THREE.Group();
 
