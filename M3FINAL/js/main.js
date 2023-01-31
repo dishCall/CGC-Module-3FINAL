@@ -19,12 +19,16 @@ grass(128,1,100);
 roadBuild();
 fenceBuild();
 /*
+
 @Goal When all Object is Added
 Change All MeshBasicMaterial to MeshDepthMaterial
 Add Pink Wood Texture On walls
 Add Dark Green Wood Textutre on roofs.
 First House
 Add Lights on windows();
+Create A box cloud
+Add Snow Particle. Use White color
+
 */
 function firstLayer(height,weight,depth){
 const waterTexture = new THREE.TextureLoader().load("./assets/textures/water.jpg")
