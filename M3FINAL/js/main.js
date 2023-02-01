@@ -19,7 +19,7 @@ grass(128,1,100);
 roadBuild();
 fenceBuild();
 treeBuild();
-//wallBuild();
+wallBuild();
 electricPoleBuild();
 bigHouse();
 
@@ -869,13 +869,13 @@ function bigHouse(){
   bottomRoofPartFourth.rotation.y = 5.4;
 
   const PoleBoardLinkSecond = boardLink(1,1,3);
-  PoleBoardLinkSecond.position.x = -50;
+  PoleBoardLinkSecond.position.x = -49;
   PoleBoardLinkSecond.position.y = 10;
-  PoleBoardLinkSecond.position.z = -6;
+  PoleBoardLinkSecond.position.z = -4;
   PoleBoardLinkSecond.rotation.y = 3.2;
-  PoleBoardLinkSecond.scale.set(1,1,4);
+  PoleBoardLinkSecond.scale.set(1,1,5);
   const PoleBillBoardSecond = boardSignBorder(1,5,5);
-  PoleBillBoardSecond.position.x = -49;
+  PoleBillBoardSecond.position.x = -48;
   PoleBillBoardSecond.position.y = 10;
   PoleBillBoardSecond.position.z = 2;
   const windowsBigHouseFirst = windowsBordersBigHouse(7,3,1);
