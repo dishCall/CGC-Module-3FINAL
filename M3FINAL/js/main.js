@@ -742,12 +742,12 @@ function house(){
 
 
   //sign board
-  const boardWood = boardLink(1,1,3);
-  boardWood.position.x = -12;
-  boardWood.position.y = 13;
-  boardWood.position.z = -1;
-  boardWood.scale.set(1,1,5);
-  boardWood.rotation.y = 4.7;
+  const boardWoodLink = boardLink(1,1,3);
+  boardWoodLink.position.x = -12;
+  boardWoodLink.position.y = 13;
+  boardWoodLink.position.z = -1;
+  boardWoodLink.scale.set(1,1,5);
+  boardWoodLink.rotation.y = 4.7;
   const boardWoodSignBorder = boardSignBorder(1,10,5);
   boardWoodSignBorder.position.x = -20;
   boardWoodSignBorder.position.y = 13;
@@ -756,7 +756,7 @@ function house(){
   //add texture here.. for image
 
   houseGroup.add(boardWoodSignBorder);
-  houseGroup.add(boardWood);
+  houseGroup.add(boardWoodLink);
   houseGroup.add(windowFirstFloorLightsOff);
   houseGroup.add(foundationSecondFloorBackLeft);
   houseGroup.add(foundationSecondFloorBackRight);
@@ -868,6 +868,16 @@ function bigHouse(){
   bottomRoofPartFourth.scale.set(2,1,2.2);
   bottomRoofPartFourth.rotation.y = 5.4;
 
+  const PoleBoardLinkSecond = boardLink(1,1,3);
+  PoleBoardLinkSecond.position.x = -50;
+  PoleBoardLinkSecond.position.y = 10;
+  PoleBoardLinkSecond.position.z = -6;
+  PoleBoardLinkSecond.rotation.y = 3.2;
+  PoleBoardLinkSecond.scale.set(1,1,4);
+  const PoleBillBoardSecond = boardSignBorder(1,5,5);
+  PoleBillBoardSecond.position.x = -49;
+  PoleBillBoardSecond.position.y = 10;
+  PoleBillBoardSecond.position.z = 2;
   const windowsBigHouseFirst = windowsBordersBigHouse(7,3,1);
   windowsBigHouseFirst.position.x = -45;
   windowsBigHouseFirst.position.y = 3.5;
@@ -888,6 +898,15 @@ function bigHouse(){
   windowBigHouseSecondFirst.position.y = 10.5;
   windowBigHouseSecondFirst.position.z = -12.5;
   windowBigHouseSecondFirst.rotation.y = 1.5;
+  const windowBigHouseThirdFirst = windowsBordersBigHouse(6,2,1);
+  windowBigHouseThirdFirst.position.x = -62.5;
+  windowBigHouseThirdFirst.position.y = 15.5;
+  windowBigHouseThirdFirst.position.z = -12.5;
+  windowBigHouseThirdFirst.rotation.y = 3.05;
+
+  bigHouseBuilding.add(PoleBillBoardSecond);
+  bigHouseBuilding.add(PoleBoardLinkSecond);
+  bigHouseBuilding.add(windowBigHouseThirdFirst);
   bigHouseBuilding.add(windowBigHouseSecondFirst);
   bigHouseBuilding.add(windowsBigHouseFirstThird);
   bigHouseBuilding.add(windowsBigHouseFirstSecond);
