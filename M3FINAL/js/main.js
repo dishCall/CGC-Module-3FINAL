@@ -72,18 +72,21 @@ function grass(height,weight,depth){
 }
 
 function cityWall(height,weight,depth){
+  //add reddish wood texture
   const cityWallGeometry = new THREE.BoxGeometry(height,weight,depth);
   const cityWallMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
   const cityWall = new THREE.Mesh(cityWallGeometry,cityWallMaterial);
   return cityWall;
 }
 function cityRoof(radiTop,radiBottom,height,radiSegment){
+  //light brownish texture
   const cityRoofGeometry = new THREE.CylinderGeometry(radiTop,radiBottom,height,radiSegment);
   const cityRoofMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
   const cityRoof = new THREE.Mesh(cityRoofGeometry,cityRoofMaterial);
   return cityRoof
 }
 function wallTubes(radi,length,capSegment){
+  //grayish metal texture
   const wallTubesGeometry = new THREE.CapsuleGeometry(radi,length,capSegment);
   const wallTubesMaterial = new THREE.MeshBasicMaterial({color: 'white'});
   const wallTubes = new THREE.Mesh(wallTubesGeometry,wallTubesMaterial);
@@ -97,7 +100,7 @@ function road(height,weight,depth){
   return road;
 }
 function roadBump(height,weight,depth){
-  //add light stone brick color
+  //add light brown stone brick color
   const roadBumpGeometry = new THREE.BoxGeometry(height,weight,depth);
   const roadBumpMaterial = new THREE.MeshBasicMaterial({color: 'gray'})
   const roadBump = new THREE.Mesh(roadBumpGeometry,roadBumpMaterial);
@@ -111,18 +114,21 @@ function fence(height,weight,depth){
   return fence;
 }
 function treeWood(height,weight,depth){
+  //change color to RGB brownish
   const treeWoodGeometry = new THREE.BoxGeometry(height,weight,depth);
   const treeWoodMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
   const treeWood = new THREE.Mesh(treeWoodGeometry,treeWoodMaterial);
   return treeWood;
 }
 function treeWoodLeaf(height,weight,depth){
+  //find green colored Leaf texture
   const treeWoodLeafGeometry = new THREE.BoxGeometry(height,weight,depth);
   const treeWoodLeafMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
   const treeWoodLeaf = new THREE.Mesh(treeWoodLeafGeometry,treeWoodLeafMaterial);
   return treeWoodLeaf;
 }
 function treeWoodLeafSnow(height,weight,depth){
+  //snow colored leaf texture
   const treeWoodLeafSnowGeometry = new THREE.BoxGeometry(height,weight,depth);
   const treeWoodLeafSnowMaterial = new THREE.MeshBasicMaterial({color:'white'});
   const treeWoodLeafSnow = new THREE.Mesh(treeWoodLeafSnowGeometry,treeWoodLeafSnowMaterial);
@@ -136,6 +142,7 @@ function houseFoundation(){
   return foundation;
 }
 function houseRoofUpper(){
+  //brownish wooden texture
   const upperRoofGeometry = new THREE.CylinderGeometry(7,7,12,3,1);
   const upperRoofMaterial = new THREE.MeshBasicMaterial({color:'rgb(146,156,93)'});
   const upperRoof = new THREE.Mesh(upperRoofGeometry,upperRoofMaterial);
@@ -429,7 +436,7 @@ function wallBuild(){
 
 function house(){
   const houseGroup = new THREE.Group();
-
+  //add light brownish texture
   const houseLowerGeometry = new THREE.BoxGeometry (15,10,15);
   const houseLowerMaterial = new THREE.MeshBasicMaterial({color: 'rgb(146,156,93)'});
   const houseBody = new THREE.Mesh(houseLowerGeometry,houseLowerMaterial);
@@ -440,17 +447,16 @@ function house(){
   const houseMiddle = new THREE.Mesh(houseMiddleGeometry,houseMiddleMaterial);
   houseMiddle.position.y = 14;
   houseMiddle.rotation.y = 11.9;
-
+  //add dark green wooden texture
   const roofLowerGeometry = new THREE.CylinderGeometry(10,20,5,4);
   const roofLowerMaterial = new THREE.MeshBasicMaterial({color: 'rgb(15,138,43)'});
   const roofLower = new THREE.Mesh(roofLowerGeometry,roofLowerMaterial);
   roofLower.position.y = 10;
-
   roofLower.rotation.y = 0.1;
-  
-  const roofMiddleGeoemetry = new THREE.CylinderGeometry(9,14,5,4)
+  //add  dark green wooden texture.
+  const roofMiddleGeometry = new THREE.CylinderGeometry(9,14,5,4)
   const roofMiddleMaterial = new THREE.MeshBasicMaterial({color: 'rgb(15,138,43)'})
-  const roofMiddle = new THREE.Mesh(roofMiddleGeoemetry,roofMiddleMaterial);
+  const roofMiddle = new THREE.Mesh(roofMiddleGeometry,roofMiddleMaterial);
   roofMiddle.position.y = 19;
   roofMiddle.rotation.y = 0.1;
   
@@ -460,7 +466,7 @@ function house(){
   roofUpper.rotation.x = 240.35;
   roofUpper.rotation.z = 0.9;
 
-
+  //add dark green wooden texture
   const roofWallSenGeometry = new THREE.CylinderGeometry(8,8,11,3,1);
   const roofWallSenMaterial = new THREE.MeshBasicMaterial({color: 'white'});
   const roofWallSen = new THREE.Mesh(roofWallSenGeometry,roofWallSenMaterial);
@@ -478,6 +484,7 @@ function house(){
   windowWall.rotation.y = 2.5;
   windowWall.rotation.z = -1;
 
+  //dark green texture
   const WindowSecondFloorGeometry = new THREE.BoxGeometry(1,3,3);
   const WindowSecondFloorMaterial = new THREE.MeshBasicMaterial({color: 'blue'});
   const windowSecondFloor = new THREE.Mesh(WindowSecondFloorGeometry,WindowSecondFloorMaterial);
@@ -487,6 +494,7 @@ function house(){
   windowSecondFloor.rotation.y = -2.2;
   windowSecondFloor.rotation.z = 1;
 
+  //light brown texture
   const doorBoxGeometry = new THREE.BoxGeometry(5,5,5);
   const doorBoxMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
   const doorBox = new THREE.Mesh(doorBoxGeometry,doorBoxMaterial);
@@ -494,7 +502,7 @@ function house(){
   doorBox.position.x = -3;
   doorBox.position.z = 8.2;
   doorBox.rotation.y = -2.2;
-
+  //dark green texture
   const doorBoxHeadGeometry = new THREE.BoxGeometry(5,1,5);
   const doorBoxHeadMaterial = new THREE.MeshBasicMaterial({color: 'green'});
   const doorBoxHead = new THREE.Mesh(doorBoxHeadGeometry,doorBoxHeadMaterial);
@@ -538,6 +546,7 @@ function house(){
   firstFloorWindowLightsOff.position.z = -4;
   firstFloorWindowLightsOff.rotation.y = -2.2;
 
+  //add dark greenish texture
   const windowFirstFloorLightsOffGeometry = new THREE.BoxGeometry(3,1,8);
   const windowFirstFloorLightsOffMaterial = new THREE.MeshBasicMaterial({color: 'blue'});
   const windowFirstFloorLightsOff = new THREE.Mesh(windowFirstFloorLightsOffGeometry,windowFirstFloorLightsOffMaterial);
@@ -546,7 +555,7 @@ function house(){
   windowFirstFloorLightsOff.position.z = -5;
   windowFirstFloorLightsOff.rotation.y = -3.8;
   windowFirstFloorLightsOff.rotation.z = 2.2;
-  
+  //add dark greenish texture
   const windowSecondFloorNoLightSideGeometry = new THREE.BoxGeometry(3,1,8);
   const windowSecondFloorNoLightSideMaterial = new THREE.MeshBasicMaterial({color: 'blue'});
   const windowSecondFloorNoLightSide = new THREE.Mesh(windowSecondFloorNoLightSideGeometry,windowSecondFloorNoLightSideMaterial);
@@ -561,6 +570,7 @@ function house(){
   secondFloorWindowFrontLightsOff.y = 4;
   secondFloorWindowFrontLightsOff.z = -4;
   secondFloorWindowFrontLightsOff.x = -6;
+  //code not working ^ wrong coordinates
 
   const foundationfirstFloorFrontRight = houseFoundation();
   foundationfirstFloorFrontRight.position.y = 3.6;
@@ -597,7 +607,7 @@ function house(){
   foundationSecondFloorBackLeft.position.x = -2;
   foundationSecondFloorBackLeft.position.z = -12;
 
-  //door  add door texture
+  
   const doorGeometry = new THREE.BoxGeometry(2.5,5,2);
   const doorMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
   const door = new THREE.Mesh(doorGeometry,doorMaterial);
@@ -605,7 +615,7 @@ function house(){
   door.position.x = -4.9;
   door.position.z = 7.5;
   door.rotation.y = -2.2;
-  //door.rotation.x = -1.9;
+
 
   houseGroup.add(windowFirstFloorLightsOff);
   houseGroup.add(foundationSecondFloorBackLeft);
