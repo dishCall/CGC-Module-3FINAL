@@ -19,8 +19,9 @@ grass(128,1,100);
 roadBuild();
 fenceBuild();
 treeBuild();
-wallBuild();
+//wallBuild();
 electricPoleBuild();
+bigHouse();
 
 /*
 
@@ -189,11 +190,18 @@ function windows(height,width,depth){
   return windows;
 
 }
+
 function windowsBorders(height,width,depth){
   const windowBorderGeometry = new THREE.BoxGeometry(height,width,depth);
-  const windowBorderMaterials = new THREE.MeshBasicMaterial({color: 'brown'});
+  const windowBorderMaterials = new THREE.MeshBasicMaterial({color: 'gray'});
   const windowsBorder = new THREE.Mesh(windowBorderGeometry,windowBorderMaterials);
   return windowsBorder;
+}
+function windowsBordersBigHouse(height,width,depth){
+  const windowBorderBigHouseGeometry = new THREE.BoxGeometry(height,width,depth);
+  const windowBorderBigHouseMaterials = new THREE.MeshBasicMaterial({color: 'brown'});
+  const windowsBigHouseBorder = new THREE.Mesh(windowBorderBigHouseGeometry,windowBorderBigHouseMaterials);
+  return windowsBigHouseBorder;
 }
 function windowsnoLights(height,width,depth){
   const windowNoLightsGeometry = new THREE.BoxGeometry(height,width,depth);
@@ -204,7 +212,7 @@ function windowsnoLights(height,width,depth){
 function bigHouseBlocks(height,width,depth){
   //add light wooden texture
   const bigHouseBlockGeometry = new THREE.BoxGeometry(height,width,depth);
-  const bigHouseBlockMaterial = new THREE.MeshBasicMaterial({color: 'rgb(196,193,87)'})
+  const bigHouseBlockMaterial = new THREE.MeshBasicMaterial({color: 'rgb(107,105,44)'})
   const bigHouseBlock = new THREE.Mesh(bigHouseBlockGeometry,bigHouseBlockMaterial);
   return bigHouseBlock;
 }
@@ -544,7 +552,12 @@ function wallBuild(){
   wallBuilding.position.y = 19;
 
 }
-
+function RoofbigHouse(){
+  const bigHouseRoofGeometry = new THREE.CylinderGeometry(3,4,2,4);
+  const bighouseRoofMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
+  const bigHouseRoof = new THREE.Mesh(bigHouseRoofGeometry,bighouseRoofMaterial);
+  return bigHouseRoof;
+}
 function house(){
   const houseGroup = new THREE.Group();
   //add light brownish texture
@@ -781,8 +794,118 @@ function house(){
 //second
 function bigHouse(){
   const bigHouseBuilding = new THREE.Group();
-  
+  const lowerBigHouse = bigHouseBlocks(30,10,10);
+  lowerBigHouse.position.x = -53;
+  lowerBigHouse.position.y = 3;
+  lowerBigHouse.position.z = -14;
+  lowerBigHouse.rotation.y = 3.05;
+  const MiddleBigHouse = bigHouseBlocks(28,8.3,5);
+  MiddleBigHouse.position.x = -53.5;
+  MiddleBigHouse.position.y = 10;
+  MiddleBigHouse.position.z = -14;
+  MiddleBigHouse.rotation.y = 3.05;
+
+  const UpperBigHouse = bigHouseBlocks(10,4,4);
+  UpperBigHouse.position.x = -62.5;
+  UpperBigHouse.position.y = 15;
+  UpperBigHouse.position.z = -14.5;
+  UpperBigHouse.rotation.y = 3.05;
+
+
+  const topMostRoof = RoofbigHouse();
+  topMostRoof.position.x = -62.5;
+  topMostRoof.position.y = 18;
+  topMostRoof.position.z = -14.5;
+  topMostRoof.scale.set(2,1,2)
+  topMostRoof.rotation.y = 5.4;
+  const middleRoofPartFirst = RoofbigHouse();
+  middleRoofPartFirst.position.x = -63.2;
+  middleRoofPartFirst.position.y = 13;
+  middleRoofPartFirst.position.z = -14.8;
+  middleRoofPartFirst.scale.set(2,1,2);
+  middleRoofPartFirst.rotation.y = 5.4;
+  const middleRoofPartSecond = RoofbigHouse();
+  middleRoofPartSecond.position.x = -55;
+  middleRoofPartSecond.position.y = 13;
+  middleRoofPartSecond.position.z = -13.9;
+  middleRoofPartSecond.scale.set(2,1,2);
+  middleRoofPartSecond.rotation.y = 5.4;
+  const middleRoofPartThird = RoofbigHouse();
+  middleRoofPartThird.position.x = -46.5;
+  middleRoofPartThird.position.y = 13;
+  middleRoofPartThird.position.z = -13;
+  middleRoofPartThird.scale.set(2,1,2);
+  middleRoofPartThird.rotation.y = 5.4;
+  const middleRoofPartFourth = RoofbigHouse();
+  middleRoofPartFourth.position.x = -43.8;
+  middleRoofPartFourth.position.y = 13;
+  middleRoofPartFourth.position.z = -12.8;
+  middleRoofPartFourth.scale.set(2,1,2);
+  middleRoofPartFourth.rotation.y = 5.4;
+
+  const bottomRoofPartFirst = RoofbigHouse();
+  bottomRoofPartFirst.position.x = -63.5;
+  bottomRoofPartFirst.position.y = 8;
+  bottomRoofPartFirst.position.z = -15;
+  bottomRoofPartFirst.scale.set(2,1,2.2);
+  bottomRoofPartFirst.rotation.y = 5.4;
+  const bottomRoofPartSecond = RoofbigHouse();
+  bottomRoofPartSecond.position.x = -55;
+  bottomRoofPartSecond.position.y = 8;
+  bottomRoofPartSecond.position.z = -14.3;
+  bottomRoofPartSecond.scale.set(2,1,2.2);
+  bottomRoofPartSecond.rotation.y = 5.4;
+  const bottomRoofPartThird = RoofbigHouse();
+  bottomRoofPartThird.position.x = -47.4;
+  bottomRoofPartThird.position.y = 8;
+  bottomRoofPartThird.position.z = -13.5;
+  bottomRoofPartThird.scale.set(2,1,2.2);
+  bottomRoofPartThird.rotation.y = 5.4;
+  const bottomRoofPartFourth = RoofbigHouse();
+  bottomRoofPartFourth.position.x = -42;
+  bottomRoofPartFourth.position.y = 8;
+  bottomRoofPartFourth.position.z = -13;
+  bottomRoofPartFourth.scale.set(2,1,2.2);
+  bottomRoofPartFourth.rotation.y = 5.4;
+
+  const windowsBigHouseFirst = windowsBordersBigHouse(7,3,1);
+  windowsBigHouseFirst.position.x = -45;
+  windowsBigHouseFirst.position.y = 3.5;
+  windowsBigHouseFirst.position.z = -8.5;
+  windowsBigHouseFirst.rotation.y = 3.05;
+  const windowsBigHouseFirstSecond = windowsBordersBigHouse(7,3,1);
+  windowsBigHouseFirstSecond.position.x = -55;
+  windowsBigHouseFirstSecond.position.y = 3.5;
+  windowsBigHouseFirstSecond.position.z = -9.5;
+  windowsBigHouseFirstSecond.rotation.y = 3.05;
+  const windowsBigHouseFirstThird = windowsBordersBigHouse(7,3,1);
+  windowsBigHouseFirstThird.position.x = -38.4;
+  windowsBigHouseFirstThird.position.y =  3.5;
+  windowsBigHouseFirstThird.position.z = -12.5;
+  windowsBigHouseFirstThird.rotation.y =  1.5;
+  const windowBigHouseSecondFirst = windowsBordersBigHouse(4,2,1);
+  windowBigHouseSecondFirst.position.x = -40;
+  windowBigHouseSecondFirst.position.y = 10.5;
+  windowBigHouseSecondFirst.position.z = -12.5;
+  windowBigHouseSecondFirst.rotation.y = 1.5;
+  bigHouseBuilding.add(windowBigHouseSecondFirst);
+  bigHouseBuilding.add(windowsBigHouseFirstThird);
+  bigHouseBuilding.add(windowsBigHouseFirstSecond);
+  bigHouseBuilding.add(windowsBigHouseFirst);
+  bigHouseBuilding.add(bottomRoofPartFourth)
+  bigHouseBuilding.add(bottomRoofPartThird);
+  bigHouseBuilding.add(bottomRoofPartSecond);
+  bigHouseBuilding.add(bottomRoofPartFirst);
+  bigHouseBuilding.add(middleRoofPartFourth);
+  bigHouseBuilding.add(middleRoofPartThird);
+  bigHouseBuilding.add(middleRoofPartSecond);
+  bigHouseBuilding.add(middleRoofPartFirst);
+  bigHouseBuilding.add(topMostRoof);
+  bigHouseBuilding.add(UpperBigHouse);
+  bigHouseBuilding.add(MiddleBigHouse);
+  bigHouseBuilding.add(lowerBigHouse);
   scene.add(bigHouseBuilding);
+  bigHouseBuilding.position.y = 19;
 }
 function animate() {
   requestAnimationFrame(animate);
