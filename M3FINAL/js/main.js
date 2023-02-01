@@ -98,6 +98,12 @@ function boardSignBorder(height,width,depth){
   const signBoardBorder = new THREE.Mesh(signBoardBorderGeometry,signBoardBorderMaterial);
   return signBoardBorder;
 }
+function boardLink(height,width,depth){
+  const boardLinkWoodGeometry = new THREE.BoxGeometry(height,width,depth);
+  const boardLinkWoodMaterial = new THREE.MeshBasicMaterial({color: 'rgb(161,118,0)'});
+  const boardLinkWood = new THREE.Mesh(boardLinkWoodGeometry,boardLinkWoodMaterial);
+  return boardLinkWood;
+}
 function cityWall(height,width,depth){
   //add reddish wood texture
   const cityWallGeometry = new THREE.BoxGeometry(height,width,depth);
@@ -194,6 +200,13 @@ function windowsnoLights(height,width,depth){
   const windowNoLightsMaterial = new THREE.MeshBasicMaterial({color: 'black'});
   const windowsnoLights = new THREE.Mesh(windowNoLightsGeometry,windowNoLightsMaterial);
   return windowsnoLights;
+}
+function bigHouseBlocks(height,width,depth){
+  //add light wooden texture
+  const bigHouseBlockGeometry = new THREE.BoxGeometry(height,width,depth);
+  const bigHouseBlockMaterial = new THREE.MeshBasicMaterial({color: 'rgb(196,193,87)'})
+  const bigHouseBlock = new THREE.Mesh(bigHouseBlockGeometry,bigHouseBlockMaterial);
+  return bigHouseBlock;
 }
 function treeBuild(){
   const treeBuilding = new THREE.Group();
@@ -715,6 +728,22 @@ function house(){
   door.rotation.y = -2.2;
 
 
+  //sign board
+  const boardWood = boardLink(1,1,3);
+  boardWood.position.x = -12;
+  boardWood.position.y = 13;
+  boardWood.position.z = -1;
+  boardWood.scale.set(1,1,5);
+  boardWood.rotation.y = 4.7;
+  const boardWoodSignBorder = boardSignBorder(1,10,5);
+  boardWoodSignBorder.position.x = -20;
+  boardWoodSignBorder.position.y = 13;
+  boardWoodSignBorder.position.z = -2;
+  boardWoodSignBorder.rotation.y = 1.5;
+  //add texture here.. for image
+
+  houseGroup.add(boardWoodSignBorder);
+  houseGroup.add(boardWood);
   houseGroup.add(windowFirstFloorLightsOff);
   houseGroup.add(foundationSecondFloorBackLeft);
   houseGroup.add(foundationSecondFloorBackRight);
@@ -751,7 +780,9 @@ function house(){
 
 //second
 function bigHouse(){
-
+  const bigHouseBuilding = new THREE.Group();
+  
+  scene.add(bigHouseBuilding);
 }
 function animate() {
   requestAnimationFrame(animate);
