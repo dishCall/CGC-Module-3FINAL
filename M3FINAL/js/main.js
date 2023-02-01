@@ -19,6 +19,7 @@ grass(128,1,100);
 roadBuild();
 fenceBuild();
 treeBuild();
+wallBuild();
 /*
 
 @Goal When all Object is Added
@@ -70,6 +71,24 @@ function grass(height,weight,depth){
   return grass;
 }
 
+function cityWall(height,weight,depth){
+  const cityWallGeometry = new THREE.BoxGeometry(height,weight,depth);
+  const cityWallMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
+  const cityWall = new THREE.Mesh(cityWallGeometry,cityWallMaterial);
+  return cityWall;
+}
+function cityRoof(radiTop,radiBottom,height,radiSegment){
+  const cityRoofGeometry = new THREE.CylinderGeometry(radiTop,radiBottom,height,radiSegment);
+  const cityRoofMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
+  const cityRoof = new THREE.Mesh(cityRoofGeometry,cityRoofMaterial);
+  return cityRoof
+}
+function wallTubes(radi,length,capSegment){
+  const wallTubesGeometry = new THREE.CapsuleGeometry(radi,length,capSegment);
+  const wallTubesMaterial = new THREE.MeshBasicMaterial({color: 'white'});
+  const wallTubes = new THREE.Mesh(wallTubesGeometry,wallTubesMaterial);
+  return wallTubes;
+}
 function road(height,weight,depth){
   //add light texture brick
   const roadGeometry = new THREE.BoxGeometry(height,weight,depth);
@@ -195,6 +214,35 @@ function treeBuild(){
   treeBehindBigHousePartLeafSnow.position.z = -35;
   treeBehindBigHousePartLeafSnow.position.y = 52;
   treeBehindBigHousePartLeafSnow.rotation.y = 1;
+
+  const treeRightSideSmallHouse = treeWood(5,40,5);
+  treeRightSideSmallHouse.position.x = 20;
+  treeRightSideSmallHouse.position.y = 20;
+  treeRightSideSmallHouse.position.z = 15;
+  const treeRightSideSmallHousePart = new treeWood(5,30,5);
+  treeRightSideSmallHousePart.position.x = 20;
+  treeRightSideSmallHousePart.position.y = 15;
+  treeRightSideSmallHousePart.position.z = 15;
+  treeRightSideSmallHousePart.rotation.y = 1;
+  const treeRightSideSmallHouseLeaf = new treeWoodLeaf(25,10,25);
+  treeRightSideSmallHouseLeaf.position.x = 20;
+  treeRightSideSmallHouseLeaf.position.y = 40;
+  treeRightSideSmallHouseLeaf.position.z = 15;
+  treeRightSideSmallHouseLeaf.rotation.y = 2;
+  const treeRightSideSmallHouseLeafSecond = new treeWoodLeaf(25,10,25);
+  treeRightSideSmallHouseLeafSecond.position.x = 15;
+  treeRightSideSmallHouseLeafSecond.position.y = 45;
+  treeRightSideSmallHouseLeafSecond.position.z = 19;
+  treeRightSideSmallHouseLeafSecond.rotation.y = 2;
+  const treeRightSideSmallHouseLeafThird = new treeWoodLeafSnow(25,10,25);
+  treeRightSideSmallHouseLeafThird.position.x = 25;
+  treeRightSideSmallHouseLeafThird.position.y = 44;
+  treeRightSideSmallHouseLeafThird.position.z = 9;
+  treeRightSideSmallHouseLeafThird.rotation.y = 2;
+  treeBuilding.add(treeRightSideSmallHouseLeafThird);
+  treeBuilding.add(treeRightSideSmallHouseLeafSecond);
+  treeBuilding.add(treeRightSideSmallHouseLeaf);
+  treeBuilding.add(treeRightSideSmallHousePart);
   treeBuilding.add(treeBehindSmallHouseLeafThird);
   treeBuilding.add(treeBehindBigHouse);
   treeBuilding.add(treeBehindSmallHousePart);
@@ -205,6 +253,7 @@ function treeBuild(){
   treeBuilding.add(treeBehindBigHousePartLeaf);
   treeBuilding.add(treeBehindBigHousePartLeafSecond);
   treeBuilding.add(treeBehindBigHousePartLeafSnow);
+  treeBuilding.add(treeRightSideSmallHouse);
   scene.add(treeBuilding);
   treeBuilding.position.y = 19;
   
@@ -245,6 +294,24 @@ function roadBuild(){
   roadBumpMiddleY.position.y = -1.4;
   roadBumpMiddleY.rotation.y = 1.5;
   
+  const roadBumpMiddleYSecond = roadBump(5,5,10);
+  roadBumpMiddleYSecond.position.x = -31;
+  roadBumpMiddleYSecond.position.z = 7;
+  roadBumpMiddleYSecond.position.y = -1.4;
+  roadBumpMiddleYSecond.rotation.y = 3.8;
+  const roadBumpBetweenHouse = roadBump(5,5,10);
+  roadBumpBetweenHouse.position.x = -35;
+  roadBumpBetweenHouse.position.z = -22;
+  roadBumpBetweenHouse.position.y = -1.4;
+  roadBumpBetweenHouse.rotation.y = 0.2;
+  const roadBumpBetweenHouseSecond = roadBump(5,5,10);
+  roadBumpBetweenHouseSecond.position.x = -35;
+  roadBumpBetweenHouseSecond.position.z = -15;
+  roadBumpBetweenHouseSecond.position.y = -1.4;
+  roadBumpBetweenHouseSecond.rotation.y = 3;
+  roads.add(roadBumpBetweenHouseSecond);
+  roads.add(roadBumpBetweenHouse);
+  roads.add(roadBumpMiddleYSecond);
   roads.add(roadLast);
   roads.add(roadMiddle);
   roads.add(roadRightY);
@@ -295,6 +362,69 @@ function fenceBuild(){
   fenceGroup.add(fenceNearBigTree);
   scene.add(fenceGroup);
   fenceGroup.position.y = 19;
+}
+function wallBuild(){
+  const wallBuilding = new THREE.Group();
+  const gateWall = cityWall(14,50,3);
+  gateWall.position.x = -44;
+  gateWall.position.y = 17;
+  gateWall.position.z = -48;
+  const gateSideWall = cityWall(30,50,3);
+  gateSideWall.position.x = -55;
+  gateSideWall.position.y = 13;
+  gateSideWall.position.z = -48;
+  const gateWallRight = cityWall(14,50,3);
+  gateWallRight.position.x = -14;
+  gateWallRight.position.y = 17;
+  gateWallRight.position.z = -47;
+  const gateSideWallRight = cityWall(24,50,3);
+  gateSideWallRight.position.x = 2;
+  gateSideWallRight.position.y = 13;
+  gateSideWallRight.position.z = -45;
+  gateSideWallRight.rotation.y = 3;
+  const gateSideWallRightFar = cityWall(26,50,3);
+  gateSideWallRightFar.position.x = 17;
+  gateSideWallRightFar.position.y = 13;
+  gateSideWallRightFar.position.z = -38;
+  gateSideWallRightFar.rotation.y = 2.5;
+  const gateWallTop = cityWall(17,7,3);
+  gateWallTop.position.x = -29;
+  gateWallTop.position.y = 38;
+  gateWallTop.position.z = -47;
+  const wallTubeLeft = wallTubes(2,5,4);
+  wallTubeLeft.position.x = -37;
+  wallTubeLeft.position.y = 15;
+  wallTubeLeft.position.z = -46;
+  wallTubeLeft.scale.set(1,5.5,2);
+  const wallTubeRight = wallTubes(2,5,4);
+  wallTubeRight.position.x = -21;
+  wallTubeRight.position.y = 15;
+  wallTubeRight.position.z = -45;
+  wallTubeRight.scale.set(1,5.5,2);
+  const wallTubeTop = wallTubes(2,5,4);
+  wallTubeTop.position.x = -29;
+  wallTubeTop.position.y = 34;
+  wallTubeTop.position.z = -45;
+  wallTubeTop.rotation.z = 4.7;
+  wallTubeTop.scale.set(1,2,2);
+  const wallTubeTopMiddle = wallTubes(2,3,4);
+  wallTubeTopMiddle.position.x = -29;
+  wallTubeTopMiddle.position.y = 38;
+  wallTubeTopMiddle.position.z = -46;
+  wallTubeTopMiddle.scale.set(1,1,2);
+  wallBuilding.add(gateWallTop);
+  wallBuilding.add(wallTubeTopMiddle);
+  wallBuilding.add(wallTubeTop);
+  wallBuilding.add(wallTubeRight);
+  wallBuilding.add(wallTubeLeft);
+  wallBuilding.add(gateSideWallRightFar);
+  wallBuilding.add(gateSideWallRight);
+  wallBuilding.add(gateSideWall);
+  wallBuilding.add(gateWallRight);
+  wallBuilding.add(gateWall);
+  scene.add(wallBuilding);
+  wallBuilding.position.y = 19;
+
 }
 
 function house(){
