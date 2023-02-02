@@ -216,6 +216,18 @@ function bigHouseBlocks(height,width,depth){
   const bigHouseBlock = new THREE.Mesh(bigHouseBlockGeometry,bigHouseBlockMaterial);
   return bigHouseBlock;
 }
+function wallBigHouseDoor(height,width,depth){
+  const wallBigHouseDoorGeometry = new THREE.BoxGeometry(height,width,depth);
+  const wallBigHouseDoorMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
+  const wallBigHouseDoors = new THREE.Mesh(wallBigHouseDoorGeometry,wallBigHouseDoorMaterial);
+  return wallBigHouseDoors;
+}
+function RoofbigHouse(){
+  const bigHouseRoofGeometry = new THREE.CylinderGeometry(3,4,2,4);
+  const bighouseRoofMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
+  const bigHouseRoof = new THREE.Mesh(bigHouseRoofGeometry,bighouseRoofMaterial);
+  return bigHouseRoof;
+}
 function treeBuild(){
   const treeBuilding = new THREE.Group();
 
@@ -552,12 +564,6 @@ function wallBuild(){
   wallBuilding.position.y = 19;
 
 }
-function RoofbigHouse(){
-  const bigHouseRoofGeometry = new THREE.CylinderGeometry(3,4,2,4);
-  const bighouseRoofMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
-  const bigHouseRoof = new THREE.Mesh(bigHouseRoofGeometry,bighouseRoofMaterial);
-  return bigHouseRoof;
-}
 function house(){
   const houseGroup = new THREE.Group();
   //add light brownish texture
@@ -868,6 +874,35 @@ function bigHouse(){
   bottomRoofPartFourth.scale.set(2,1,2.2);
   bottomRoofPartFourth.rotation.y = 5.4;
 
+  const doorBuildFirst = wallBigHouseDoor(1,5,5);
+  doorBuildFirst.position.x = -60;
+  doorBuildFirst.position.y = 3;
+  doorBuildFirst.position.z = -9;
+  const doorBuildFirstPartSecond = wallBigHouseDoor(1,5,5);
+  doorBuildFirstPartSecond.position.x = -64;
+  doorBuildFirstPartSecond.position.y = 3;
+  doorBuildFirstPartSecond.position.z = -9;
+  const doorBuildFirstPartTop = wallBigHouseDoor(6,1,5);
+  doorBuildFirstPartTop.position.x = -62;
+  doorBuildFirstPartTop.position.y = 6;
+  doorBuildFirstPartTop.position.z = -9;
+
+  const doorBuildThird = wallBigHouseDoor(1,3,3);
+  doorBuildThird.position.x = -57;
+  doorBuildThird.position.y = 15.5;
+  doorBuildThird.position.z = -15.5;
+  doorBuildThird.rotation.y = 1.5;
+  const doorBuildThirdPartSecond = wallBigHouseDoor(1,3,3);
+  doorBuildThirdPartSecond.position.x = -57;
+  doorBuildThirdPartSecond.position.y = 15.5;
+  doorBuildThirdPartSecond.position.z = -13;
+  doorBuildThirdPartSecond.rotation.y  = 1.5;
+
+  const doorBuildThirdPartTop = wallBigHouseDoor(3,1,3);
+  doorBuildThirdPartTop.position.x = -56;
+  doorBuildThirdPartTop.position.y = 16.5;
+  doorBuildThirdPartTop.position.z = -14;
+
   const PoleBoardLinkSecond = boardLink(1,1,3);
   PoleBoardLinkSecond.position.x = -49;
   PoleBoardLinkSecond.position.y = 10;
@@ -904,6 +939,42 @@ function bigHouse(){
   windowBigHouseThirdFirst.position.z = -12.5;
   windowBigHouseThirdFirst.rotation.y = 3.05;
 
+  const windowBigHouseLightsOn = windows(5,2,1);
+  windowBigHouseLightsOn.position.x = -38.2;
+  windowBigHouseLightsOn.position.y = 3.5;
+  windowBigHouseLightsOn.position.z = -12.5;
+  windowBigHouseLightsOn.rotation.y = 1.5;
+  const windowBigHouseLightsOffOneFirst =  windowsnoLights(5,2,1);
+  windowBigHouseLightsOffOneFirst.position.x =-45;
+  windowBigHouseLightsOffOneFirst.position.y = 3.5;
+  windowBigHouseLightsOffOneFirst.position.z = -8.2;
+  windowBigHouseLightsOffOneFirst.rotation.y = 3.05;
+  const windowBigHouseLightsOffOneSecond = windowsnoLights(5,2,1);
+  windowBigHouseLightsOffOneSecond.position.x = -55;
+  windowBigHouseLightsOffOneSecond.position.y = 3.5;
+  windowBigHouseLightsOffOneSecond.position.z = -9.2;
+  windowBigHouseLightsOffOneSecond.rotation.y = 3.05;
+  const windowBigHouseLightsOffSecondFirst = windowsnoLights(3,1.5,1);
+  windowBigHouseLightsOffSecondFirst.position.x = -39.7;
+  windowBigHouseLightsOffSecondFirst.position.y = 10.5;
+  windowBigHouseLightsOffSecondFirst.position.z = -12.5;
+  windowBigHouseLightsOffSecondFirst.rotation.y = 1.5;
+  const windowBigHouseLightsOffThirdFirst = windowsnoLights(4.5,1.5,1);
+  windowBigHouseLightsOffThirdFirst.position.x = -62.5;
+  windowBigHouseLightsOffThirdFirst.position.y = 15.5;
+  windowBigHouseLightsOffThirdFirst.position.z = -12;
+  windowBigHouseLightsOffThirdFirst.rotation.y = 3.05;
+  bigHouseBuilding.add(windowBigHouseLightsOffThirdFirst);
+  bigHouseBuilding.add(windowBigHouseLightsOffSecondFirst);
+  bigHouseBuilding.add(windowBigHouseLightsOffOneSecond);
+  bigHouseBuilding.add(windowBigHouseLightsOffOneFirst); 
+  bigHouseBuilding.add(windowBigHouseLightsOn);
+  bigHouseBuilding.add(doorBuildThirdPartTop);
+  bigHouseBuilding.add(doorBuildThirdPartSecond);
+  bigHouseBuilding.add(doorBuildThird);
+  bigHouseBuilding.add(doorBuildFirstPartTop);
+  bigHouseBuilding.add(doorBuildFirstPartSecond);
+  bigHouseBuilding.add(doorBuildFirst);
   bigHouseBuilding.add(PoleBillBoardSecond);
   bigHouseBuilding.add(PoleBoardLinkSecond);
   bigHouseBuilding.add(windowBigHouseThirdFirst);
