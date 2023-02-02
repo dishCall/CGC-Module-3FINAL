@@ -950,7 +950,6 @@ function bigHouse(){
   windowBigHouseThirdFirst.position.z = -12.5;
   windowBigHouseThirdFirst.rotation.y = 3.05;
 
-
   const windowBigHouseLightsOn = windows(5,2,1);
   windowBigHouseLightsOn.position.x = -38.2;
   windowBigHouseLightsOn.position.y = 3.5;
@@ -980,9 +979,20 @@ function bigHouse(){
 
   const groundBufferBigHouse = bigHouseFlatBuffer(31.5,1,12);
   groundBufferBigHouse.position.x = -53;
-
   groundBufferBigHouse.position.z = -14;
   groundBufferBigHouse.rotation.y = 3.05;
+  const groundBufferSecondBigHouse = bigHouseFlatBuffer(29,1,6);
+  groundBufferSecondBigHouse.position.x = -53.5;
+  groundBufferSecondBigHouse.position.y = 9;
+  groundBufferSecondBigHouse.position.z = -14;
+  groundBufferSecondBigHouse.rotation.y = 3.05;
+  const groundBufferThirdBigHouse = bigHouseFlatBuffer(29,1,6);
+  groundBufferThirdBigHouse.position.x = -53.5;
+  groundBufferThirdBigHouse.position.y = 13.8;
+  groundBufferThirdBigHouse.position.z = -14;
+  groundBufferThirdBigHouse.rotation.y = 3.05;
+  bigHouseBuilding.add(groundBufferThirdBigHouse);
+  bigHouseBuilding.add(groundBufferSecondBigHouse);
   bigHouseBuilding.add(groundBufferBigHouse);
   bigHouseBuilding.add(windowBigHouseLightsOffThirdFirst);
   bigHouseBuilding.add(windowBigHouseLightsOffSecondFirst);
@@ -1017,6 +1027,7 @@ function bigHouse(){
   scene.add(bigHouseBuilding);
   bigHouseBuilding.position.y = 19;
 }
+
 function animate() {
   requestAnimationFrame(animate);
  
