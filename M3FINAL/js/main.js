@@ -13,16 +13,14 @@ controls.update();
 //camera.lookAt(1,20,1);
 firstLayer(500,1,500);
 house();
-secondLayerLeft();
-secondLayer(60,20,100);
-grass(128,1,100);
+
 roadBuild();
 fenceBuild();
 treeBuild();
 wallBuild();
 electricPoleBuild();
 bigHouse();
-
+terrainBuild();
 /*
 
 @Goal When all Object is Added
@@ -38,7 +36,6 @@ Add Snow Particle. Use White color
 
 //Update Second Laters once all object is finish
 function firstLayer(height,width,depth){
-const waterTexture = new THREE.TextureLoader().load("./assets/textures/water.jpg")
 const lowerLayerGeometry = new THREE.BoxGeometry(height,width,depth);
 const lowerLayerMaterial = new THREE.MeshBasicMaterial({color: 'green'});
 const lowerLayer = new THREE.Mesh(lowerLayerGeometry,lowerLayerMaterial);
@@ -47,21 +44,48 @@ lowerLayer.position.z = 5;
 return lowerLayer;
 }
 
-function secondLayer(height,width,depth){
+function secondLayerTerrain(height,width,depth){
 const SecondLayerGeometry = new THREE.BoxGeometry(height,width,depth);
-const SecondLayerMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
+const SecondLayerMaterial = new THREE.MeshBasicMaterial({color: 'rgb(137,145,131)'});
 const secondLayer = new THREE.Mesh(SecondLayerGeometry,SecondLayerMaterial);
 scene.add(secondLayer);
 secondLayer.position.y = 8;
 return secondLayer;
 }
+//terrain
+function terrainBuild(){
+  const terrainGroup = new THREE.Group();
+  const terrainRight = secondLayerTerrain(55,20,40);
+  terrainRight.position.x = -4;
+  terrainRight.position.z = 6.2;
+  terrainRight.rotation.y = 2.45;
+  const terrainRightBack = secondLayerTerrain(55,20,60);
+  terrainRightBack.position.x = 2;
+  terrainRightBack.position.z = -22;
+  const terrainLeft = secondLayerTerrain(65,20,60);
+  terrainLeft.position.x = -50;
+  terrainLeft.position.z = -23.8;
+  terrainLeft.rotation.y = 1.45;
+  const grassRight = grass(55,1,40);
+  grassRight.position.x = -4;
+  grassRight.position.z = 6.2;
+  grassRight.rotation.y = 2.45;
+  const grassRightBack = grass(55,1,60);
+  grassRightBack.position.x = 2;
+  grassRightBack.position.z = -22;
+  const grassLeft = grass(65,1,60);
+  grassLeft.position.x = -50;
+  grassLeft.position.z = -23.8;
+  grassLeft.rotation.y = 1.45;
+  terrainGroup.add(grassLeft);
+  terrainGroup.add(grassRightBack);
+  terrainGroup.add(grassRight);
+  terrainGroup.add(terrainRightBack);
+  terrainGroup.add(terrainLeft);
+  terrainGroup.add(terrainRight);
+  scene.add(terrainGroup);
 
-function secondLayerLeft(){
-  const secondLayerLeftPart = secondLayer(60,20,100);
-  secondLayerLeftPart.position.x = -60;
-  return secondLayerLeftPart;
 }
-
 function grass(height,width,depth){
   //add grass texture
   //Use Road Bump on Road.
@@ -69,7 +93,7 @@ function grass(height,width,depth){
   const grassMaterial = new THREE.MeshBasicMaterial({color: 'green'});
   const grass = new THREE.Mesh(grassGeometry,grassMaterial);
   scene.add(grass);
-  grass.position.y = 18;
+  grass.position.y = 18.5;
   grass.position.x = -35;
   return grass;
 }
@@ -416,7 +440,7 @@ function fenceBuild(){
 
   const fenceSmallDistanceHouse = fence(15,8,1);
   fenceSmallDistanceHouse.position.x = -23;
-  fenceSmallDistanceHouse.position.z = 17;
+  fenceSmallDistanceHouse.position.z = 16.2;
   fenceSmallDistanceHouse.rotation.y = 2.5;
 
   const fenceNearBigHouse = fence(20,8,1);
@@ -709,9 +733,15 @@ function house(){
 
   //NOT WORKING NEED FIX
   const secondFloorWindowFrontLightsOff = windowsnoLights(3,2,1);
-  secondFloorWindowFrontLightsOff.y = 4;
-  secondFloorWindowFrontLightsOff.z = -4;
-  secondFloorWindowFrontLightsOff.x = -6;
+  secondFloorWindowFrontLightsOff.position.x = -6;
+  secondFloorWindowFrontLightsOff.position.y = 14.8;
+  secondFloorWindowFrontLightsOff.position.z = 3.5;
+  secondFloorWindowFrontLightsOff.rotation.y = 2.4;
+  const secondFloorWindowFrontBorder = windowsBorders(4,3,1);
+  secondFloorWindowFrontBorder.position.x = -6;
+  secondFloorWindowFrontBorder.position.y = 14.8;
+  secondFloorWindowFrontBorder.position.z = 3.2;
+  secondFloorWindowFrontBorder.rotation.y = 2.4;
   //code not working ^ wrong coordinates
 
   const foundationfirstFloorFrontRight = houseFoundation();
@@ -802,6 +832,7 @@ function house(){
   houseGroup.add(firstFloorWindowLightsOff);
   houseGroup.add(windowSecondFloorNoLightSide)
   houseGroup.add(secondFloorWindowFrontLightsOff);
+  houseGroup.add(secondFloorWindowFrontBorder);
   houseGroup.position.y = 20;
   //houseGroup.rotation.y = 3;
   //houseGroup.scale.set(2,2,2);
