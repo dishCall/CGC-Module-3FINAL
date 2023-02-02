@@ -731,7 +731,7 @@ function house(){
   windowSecondFloorNoLightSide.rotation.y = -3.8;
   windowSecondFloorNoLightSide.rotation.z = 2.2;
 
-  //NOT WORKING NEED FIX
+
   const secondFloorWindowFrontLightsOff = windowsnoLights(3,2,1);
   secondFloorWindowFrontLightsOff.position.x = -6;
   secondFloorWindowFrontLightsOff.position.y = 14.8;
@@ -742,8 +742,28 @@ function house(){
   secondFloorWindowFrontBorder.position.y = 14.8;
   secondFloorWindowFrontBorder.position.z = 3.2;
   secondFloorWindowFrontBorder.rotation.y = 2.4;
-  //code not working ^ wrong coordinates
 
+  const thirdFloorWindowSideLightsOff = windowsnoLights(3,2,1);
+  thirdFloorWindowSideLightsOff.position.x = -4.5;
+  thirdFloorWindowSideLightsOff.position.y = 24;
+  thirdFloorWindowSideLightsOff.position.z = -3.5;
+  thirdFloorWindowSideLightsOff.rotation.y = 0.9;
+
+  const thirdFloorWindowSideLightsOffBorder = windowsBorders(4,2.5,1);
+  thirdFloorWindowSideLightsOffBorder.position.x = -4.5;
+  thirdFloorWindowSideLightsOffBorder.position.y = 24;
+  thirdFloorWindowSideLightsOffBorder.position.z = -3.3;
+  thirdFloorWindowSideLightsOffBorder.rotation.y = 0.9;
+  const firstFloorWindowSide = windowsnoLights(3,2,1);
+  firstFloorWindowSide.position.x = 4.2;
+  firstFloorWindowSide.position.y = 2.8;
+  firstFloorWindowSide.position.z = 7.3;
+  firstFloorWindowSide.rotation.y = 0.9;
+  const firstFloorWindowSideBorder = windowsBorders(4,3,1);
+  firstFloorWindowSideBorder.position.x = 4;
+  firstFloorWindowSideBorder.position.y = 2.8;
+  firstFloorWindowSideBorder.position.z = 7;
+  firstFloorWindowSideBorder.rotation.y = 0.9;
   const foundationfirstFloorFrontRight = houseFoundation();
   foundationfirstFloorFrontRight.position.y = 3.6;
   foundationfirstFloorFrontRight.position.x = 18;
@@ -833,6 +853,10 @@ function house(){
   houseGroup.add(windowSecondFloorNoLightSide)
   houseGroup.add(secondFloorWindowFrontLightsOff);
   houseGroup.add(secondFloorWindowFrontBorder);
+  houseGroup.add(firstFloorWindowSide);
+  houseGroup.add(firstFloorWindowSideBorder);
+  houseGroup.add(thirdFloorWindowSideLightsOff);
+  houseGroup.add(thirdFloorWindowSideLightsOffBorder);
   houseGroup.position.y = 20;
   //houseGroup.rotation.y = 3;
   //houseGroup.scale.set(2,2,2);
