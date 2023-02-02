@@ -504,6 +504,7 @@ function wallBuild(){
   gateSideWallRightFar.position.y = 13;
   gateSideWallRightFar.position.z = -38;
   gateSideWallRightFar.rotation.y = 2.5;
+
   const gateWallTop = cityWall(17,7,3);
   gateWallTop.position.x = -29;
   gateWallTop.position.y = 38;
@@ -533,26 +534,26 @@ function wallBuild(){
 
   const wallRoofCityMiddle = cityWallRoof(1,5,44);
   wallRoofCityMiddle.position.x = -29;
-  wallRoofCityMiddle.position.y = 41.2;
-  wallRoofCityMiddle.position.z = -44;
+  wallRoofCityMiddle.position.y = 41;
+  wallRoofCityMiddle.position.z = -44.5;
   wallRoofCityMiddle.rotation.z = 4;
   wallRoofCityMiddle.rotation.y = 4.7;
 
   const wallRoofCityLeft = cityWallRoof(1,5,20);
   wallRoofCityLeft.position.x = -60;
-  wallRoofCityLeft.position.y = 38;
-  wallRoofCityLeft.position.z = -44;
+  wallRoofCityLeft.position.y = 37.5;
+  wallRoofCityLeft.position.z = -45.2;
   wallRoofCityLeft.rotation.z = 4;
   wallRoofCityLeft.rotation.y = 4.7;
 
   const wallRoofCityRight = cityWallRoof(1,5,18);
   wallRoofCityRight.position.x = 2;
   wallRoofCityRight.position.y = 38;
-  wallRoofCityRight.position.z = -42;
+  wallRoofCityRight.position.z = -43;
   wallRoofCityRight.rotation.z = 4;
-  wallRoofCityRight.rotation.y = 4.4;
+  wallRoofCityRight.rotation.y = 4.6;
   const wallRoofCityRightFar = cityWallRoof(1,5,20);
-  wallRoofCityRightFar.position.x = 17;
+  wallRoofCityRightFar.position.x = 18;
   wallRoofCityRightFar.position.y = 38;
   wallRoofCityRightFar.position.z = -35;
   wallRoofCityRightFar.rotation.z = 4;
@@ -991,6 +992,15 @@ function bigHouse(){
   groundBufferThirdBigHouse.position.y = 13.8;
   groundBufferThirdBigHouse.position.z = -14;
   groundBufferThirdBigHouse.rotation.y = 3.05;
+  const brownGroundBuffThirdBigHouseGeometry = new THREE.BoxGeometry(18.6,1,6.2);
+  const brownGroundBuffThirdBigHouseMaterial = new THREE.MeshBasicMaterial({color: 'rgb(88,77,45)'});
+  const brownGroundBuffThirdBigHouse = new THREE.Mesh(brownGroundBuffThirdBigHouseGeometry,brownGroundBuffThirdBigHouseMaterial);
+  brownGroundBuffThirdBigHouse.position.x = -48.3;
+  brownGroundBuffThirdBigHouse.position.y = 13.9;
+  brownGroundBuffThirdBigHouse.position.z = -13.4;
+  brownGroundBuffThirdBigHouse.rotation.y = 3.05;
+
+  bigHouseBuilding.add(brownGroundBuffThirdBigHouse);
   bigHouseBuilding.add(groundBufferThirdBigHouse);
   bigHouseBuilding.add(groundBufferSecondBigHouse);
   bigHouseBuilding.add(groundBufferBigHouse);
