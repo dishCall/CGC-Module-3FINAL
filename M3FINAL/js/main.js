@@ -193,13 +193,13 @@ function windows(height,width,depth){
 
 function windowsBorders(height,width,depth){
   const windowBorderGeometry = new THREE.BoxGeometry(height,width,depth);
-  const windowBorderMaterials = new THREE.MeshBasicMaterial({color: 'gray'});
+  const windowBorderMaterials = new THREE.MeshBasicMaterial({color: 'rgb(102,98,89)'});
   const windowsBorder = new THREE.Mesh(windowBorderGeometry,windowBorderMaterials);
   return windowsBorder;
 }
 function windowsBordersBigHouse(height,width,depth){
   const windowBorderBigHouseGeometry = new THREE.BoxGeometry(height,width,depth);
-  const windowBorderBigHouseMaterials = new THREE.MeshBasicMaterial({color: 'brown'});
+  const windowBorderBigHouseMaterials = new THREE.MeshBasicMaterial({color: 'rgb(74,59,24)'});
   const windowsBigHouseBorder = new THREE.Mesh(windowBorderBigHouseGeometry,windowBorderBigHouseMaterials);
   return windowsBigHouseBorder;
 }
@@ -212,9 +212,15 @@ function windowsnoLights(height,width,depth){
 function bigHouseBlocks(height,width,depth){
   //add light wooden texture
   const bigHouseBlockGeometry = new THREE.BoxGeometry(height,width,depth);
-  const bigHouseBlockMaterial = new THREE.MeshBasicMaterial({color: 'rgb(107,105,44)'})
+  const bigHouseBlockMaterial = new THREE.MeshBasicMaterial({color: 'rgb(239,226,195)'})
   const bigHouseBlock = new THREE.Mesh(bigHouseBlockGeometry,bigHouseBlockMaterial);
   return bigHouseBlock;
+}
+function bigHouseFlatBuffer(height,width,depth){
+  const bigHouseBufferGeometry = new THREE.BoxGeometry(height,width,depth);
+  const bigHouseBufferMaterial = new THREE.MeshBasicMaterial({color: 'rgb(26,84,36)'});
+  const bigHouseBuffer = new THREE.Mesh(bigHouseBufferGeometry,bigHouseBufferMaterial);
+  return bigHouseBuffer;
 }
 function wallBigHouseDoor(height,width,depth){
   const wallBigHouseDoorGeometry = new THREE.BoxGeometry(height,width,depth);
@@ -421,6 +427,11 @@ function fenceBuild(){
   fenceNearBigTree.position.x = -21;
   fenceNearBigTree.position.z = -35;
   fenceNearBigTree.rotation.y = -1.6;
+  const fenceFrontBigHouse = fence(5,8,1);
+  fenceFrontBigHouse.position.x = -68;
+  fenceFrontBigHouse.position.z = -9.5;
+  fenceFrontBigHouse.rotation.y =3.05;
+  fenceGroup.add(fenceFrontBigHouse);
   fenceGroup.add(fenceNearHouse);
   fenceGroup.add(fenceNearSmallHouse);
   fenceGroup.add(fenceNearSmallHouseSecond);
@@ -939,6 +950,7 @@ function bigHouse(){
   windowBigHouseThirdFirst.position.z = -12.5;
   windowBigHouseThirdFirst.rotation.y = 3.05;
 
+
   const windowBigHouseLightsOn = windows(5,2,1);
   windowBigHouseLightsOn.position.x = -38.2;
   windowBigHouseLightsOn.position.y = 3.5;
@@ -964,6 +976,14 @@ function bigHouse(){
   windowBigHouseLightsOffThirdFirst.position.y = 15.5;
   windowBigHouseLightsOffThirdFirst.position.z = -12;
   windowBigHouseLightsOffThirdFirst.rotation.y = 3.05;
+
+
+  const groundBufferBigHouse = bigHouseFlatBuffer(31.5,1,12);
+  groundBufferBigHouse.position.x = -53;
+
+  groundBufferBigHouse.position.z = -14;
+  groundBufferBigHouse.rotation.y = 3.05;
+  bigHouseBuilding.add(groundBufferBigHouse);
   bigHouseBuilding.add(windowBigHouseLightsOffThirdFirst);
   bigHouseBuilding.add(windowBigHouseLightsOffSecondFirst);
   bigHouseBuilding.add(windowBigHouseLightsOffOneSecond);
