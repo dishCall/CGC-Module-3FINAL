@@ -92,8 +92,9 @@ function terrainBuild(){
 function grass(height,width,depth){
   //add grass texture
   //Use Road Bump on Road.
+  const greenGrassTexture = new THREE.TextureLoader().load("./assets/textures/greengrass.jpg");
   const grassGeometry = new THREE.BoxGeometry(height,width,depth);
-  const grassMaterial = new THREE.MeshBasicMaterial({color: 'green'});
+  const grassMaterial = new THREE.MeshBasicMaterial({map: greenGrassTexture});
   const grass = new THREE.Mesh(grassGeometry,grassMaterial);
   scene.add(grass);
   grass.position.y = 18.5;
@@ -134,8 +135,9 @@ function boardLink(height,width,depth){
 }
 function cityWall(height,width,depth){
   //add reddish wood texture
+  const cityWallTexture = new THREE.TextureLoader().load("./assets/textures/lightbrownwall.jpeg");
   const cityWallGeometry = new THREE.BoxGeometry(height,width,depth);
-  const cityWallMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
+  const cityWallMaterial = new THREE.MeshBasicMaterial({map: cityWallTexture});
   const cityWall = new THREE.Mesh(cityWallGeometry,cityWallMaterial);
   return cityWall;
 }
@@ -148,15 +150,17 @@ function cityWallRoof(height,width,depth){
 }
 function wallTubes(radi,length,capSegment){
   //grayish metal texture
+  const cityTubeTexture = new THREE.TextureLoader().load("./assets/textures/stone.jpg");
   const wallTubesGeometry = new THREE.CapsuleGeometry(radi,length,capSegment);
-  const wallTubesMaterial = new THREE.MeshBasicMaterial({color: 'white'});
+  const wallTubesMaterial = new THREE.MeshBasicMaterial({map: cityTubeTexture});
   const wallTubes = new THREE.Mesh(wallTubesGeometry,wallTubesMaterial);
   return wallTubes;
 }
 function road(height,width,depth){
   //add light texture brick
+  const roadTexture = new THREE.TextureLoader().load("./assets/textures/road.jpg");
   const roadGeometry = new THREE.BoxGeometry(height,width,depth);
-  const roadMaterial = new THREE.MeshBasicMaterial({color: 'white'});
+  const roadMaterial = new THREE.MeshBasicMaterial({map: roadTexture});
   const road = new THREE.Mesh(roadGeometry,roadMaterial);
   return road;
 }
@@ -169,8 +173,9 @@ function roadBump(height,width,depth){
 }
 function fence(height,width,depth){
   //add light wood texture
+  const fenceTexture = new THREE.TextureLoader().load("./assets/textures/fence.jpg");
   const fenceGeometry = new THREE.BoxGeometry(height,width,depth);
-  const fenceMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
+  const fenceMaterial = new THREE.MeshBasicMaterial({map: fenceTexture});
   const fence = new THREE.Mesh(fenceGeometry,fenceMaterial);
   return fence;
 }
@@ -182,9 +187,10 @@ function treeWood(height,width,depth){
   return treeWood;
 }
 function treeWoodLeaf(height,width,depth){
+  const treeWoodLeafTextures = new THREE.TextureLoader().load('./assets/textures/leaf.jpg');
   //find green colored Leaf texture
   const treeWoodLeafGeometry = new THREE.BoxGeometry(height,width,depth);
-  const treeWoodLeafMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
+  const treeWoodLeafMaterial = new THREE.MeshBasicMaterial({map: treeWoodLeafTextures});
   const treeWoodLeaf = new THREE.Mesh(treeWoodLeafGeometry,treeWoodLeafMaterial);
   return treeWoodLeaf;
 }
@@ -380,8 +386,9 @@ function roadBuild(){
   roadLast.rotation.y = 3.1;
 
   //@add gray grass texture
+  const grayGrassTexture = new THREE.TextureLoader().load("./assets/textures/graygrass.jpg");
   const grayGrassGeometry = new THREE.BoxGeometry(5,5,5);
-  const grayGrassMaterial = new THREE.MeshBasicMaterial({color:'gray'});
+  const grayGrassMaterial = new THREE.MeshBasicMaterial({map: grayGrassTexture});
   const grayGrass = new THREE.Mesh(grayGrassGeometry,grayGrassMaterial);
   grayGrass.position.x = -47;
   grayGrass.position.z = 6.5;
