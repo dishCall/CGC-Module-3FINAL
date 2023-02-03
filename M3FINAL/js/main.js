@@ -7,15 +7,12 @@ document.body.appendChild( renderer.domElement );
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
 const controls = new OrbitControls( camera, renderer.domElement );
-//controls.update() must be called after any manual changes to the camera's transform
 camera.position.set( 0, 20, 100 );
 controls.update();
-//camera.lookAt(1,20,1);
 
 
 firstLayer(500,1,500);
 house();
-
 roadBuild();
 fenceBuild();
 treeBuild();
@@ -24,18 +21,7 @@ electricPoleBuild();
 bigHouse();
 terrainBuild();
 
-/*
 
-@Goal When all Object is Added
-Change All MeshBasicMaterial to MeshStandardMaterial
-Add Pink Wood Texture On walls
-Add Dark Green Wood Textutre on roofs.
-First House
-Add Lights on windows();
-Create A box cloud
-Add Snow Particle. Use White color
-
-*/
 
 //Update Second Laters once all object is finish
 function firstLayer(height,width,depth){
@@ -261,6 +247,14 @@ function wallBigHouseDoor(height,width,depth){
   const wallBigHouseDoorMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
   const wallBigHouseDoors = new THREE.Mesh(wallBigHouseDoorGeometry,wallBigHouseDoorMaterial);
   return wallBigHouseDoors;
+}
+//use to create logo
+
+function logo(height,width,depth){
+  const logoShindoGeometry = new THREE.BoxGeometry(height,width,depth);
+  const logoShindoMaterial = new THREE.MeshBasicMaterial({color:'gray'});
+  const logoShindo = new THREE.Mesh(logoShindoGeometry,logoShindoMaterial);
+  return logoShindo;
 }
 function RoofbigHouse(){
   const bigHouseRoofGeometry = new THREE.CylinderGeometry(3,4,2,4);
@@ -506,9 +500,43 @@ electricLightbulb.position.x = -23.2;
 electricLightbulb.position.y = 12;
 electricLightbulb.position.z = -8;
 electricLightbulb.scale.set(0.2,0.2,0.2);
-const poleLighting = new THREE.PointLight( 0xff0000, 2.5, 100 );
+const poleLighting = new THREE.PointLight( 0xff0000, 2.5, 60 );
 poleLighting.position.set( -23.2, 11, -8 );
 scene.add( poleLighting );
+const electricPoleNearBigHouse = electricPole(0.5,22);
+electricPoleNearBigHouse.position.x = -43;
+electricPoleNearBigHouse.position.z = 9.2;
+const electricPoleNearBigHouseTop = electricPole(0.5,6);
+electricPoleNearBigHouseTop.position.x = -42.87;
+electricPoleNearBigHouseTop.position.y = 8;
+electricPoleNearBigHouseTop.position.z = 6.5;
+electricPoleNearBigHouseTop.rotation.x = 1.5;
+electricPoleNearBigHouseTop.rotation.y = 3.5;
+const electricPoleNearBigHouseMostTop = electricPole(0.5,5);
+electricPoleNearBigHouseMostTop.position.x = -42.87;
+electricPoleNearBigHouseMostTop.position.y = 10.5;
+electricPoleNearBigHouseMostTop.position.z = 7;
+electricPoleNearBigHouseMostTop.rotation.x = 1.5;
+electricPoleNearBigHouseMostTop.rotation.y = 3.5;
+const electricLightPoleNearBigHouse = electricLightsPole(0.5,9);
+electricLightPoleNearBigHouse.position.x = -42.87;
+electricLightPoleNearBigHouse.position.y = 9.2;
+electricLightPoleNearBigHouse.position.z = 5.5;
+electricLightPoleNearBigHouse.rotation.x = 1.5;
+electricLightPoleNearBigHouse.rotation.y = 3.5;
+const electricLightbulbPoleNearBigHouse = PoleLight(3,5,10);
+electricLightbulbPoleNearBigHouse.position.x = -42.87;
+electricLightbulbPoleNearBigHouse.position.y = 8.5;
+electricLightbulbPoleNearBigHouse.position.z = 1.5;
+electricLightbulbPoleNearBigHouse.scale.set(0.2,0.2,0.2);
+const poleLightingNearBigHouse = new THREE.PointLight( 0xff0000, 2.5, 60 );
+poleLightingNearBigHouse.position.set( -42.87, 8.5, 1.5 );
+scene.add( poleLighting )
+electricPoleGroup.add(electricLightbulbPoleNearBigHouse)
+electricPoleGroup.add(electricLightPoleNearBigHouse);
+electricPoleGroup.add(electricPoleNearBigHouseMostTop);
+electricPoleGroup.add(electricPoleNearBigHouseTop);
+electricPoleGroup.add(electricPoleNearBigHouse)
 electricPoleGroup.add(electricLightbulb);
 electricPoleGroup.add(electricLightsPoleTopMiddle);
 electricPoleGroup.add(electricPoleNearSmallHouseMostTop);
@@ -614,6 +642,7 @@ function wallBuild(){
   wallBuilding.position.y = 19;
 
 }
+//house Right Side
 function house(){
   const houseGroup = new THREE.Group();
   //add light brownish texture
@@ -904,7 +933,7 @@ function house(){
   //houseGroup.scale.set(2,2,2);
   scene.add(houseGroup);
 }
-//second
+//house Left Side
 function bigHouse(){
   const bigHouseBuilding = new THREE.Group();
   const lowerBigHouse = bigHouseBlocks(30,10,10);
@@ -1136,6 +1165,7 @@ function bigHouse(){
   bigHouseBuilding.position.y = 19;
 }
 
+//cloud animation and Cloud
 const cloudGeometry = new THREE.BoxGeometry(30,10,20);
 const cloudMaterial = new THREE.MeshBasicMaterial({color: 'white'});
 const cloud = new THREE.Mesh(cloudGeometry,cloudMaterial);
