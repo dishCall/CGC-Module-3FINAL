@@ -197,7 +197,7 @@ function treeWoodLeaf(height,width,depth){
 function treeWoodLeafSnow(height,width,depth){
   //snow colored leaf texture
   const treeWoodLeafSnowGeometry = new THREE.BoxGeometry(height,width,depth);
-  const treeWoodLeafSnowMaterial = new THREE.MeshBasicMaterial({color:'white'});
+  const treeWoodLeafSnowMaterial = new THREE.MeshBasicMaterial({color:'rgb(196,195,195)'});
   const treeWoodLeafSnow = new THREE.Mesh(treeWoodLeafSnowGeometry,treeWoodLeafSnowMaterial);
   return treeWoodLeafSnow;
 }
