@@ -11,6 +11,8 @@ const controls = new OrbitControls( camera, renderer.domElement );
 camera.position.set( 0, 20, 100 );
 controls.update();
 //camera.lookAt(1,20,1);
+
+
 firstLayer(500,1,500);
 house();
 
@@ -21,6 +23,7 @@ wallBuild();
 electricPoleBuild();
 bigHouse();
 terrainBuild();
+
 /*
 
 @Goal When all Object is Added
@@ -759,11 +762,25 @@ function house(){
   firstFloorWindowSide.position.y = 2.8;
   firstFloorWindowSide.position.z = 7.3;
   firstFloorWindowSide.rotation.y = 0.9;
+
+  const secondFloorWindowSide = windowsnoLights(3,2,1);
+  secondFloorWindowSide.position.x = 3.2;
+  secondFloorWindowSide.position.y = 14.8;
+  secondFloorWindowSide.position.z = 6;
+  secondFloorWindowSide.rotation.y = 0.9;
+
+  const secondFloorWindowSideBorder = windowsBorders(4,3,1);
+  secondFloorWindowSideBorder.position.x = 3;
+  secondFloorWindowSideBorder.position.y = 14.8;
+  secondFloorWindowSideBorder.position.z = 6;
+  secondFloorWindowSideBorder.rotation.y = 0.9;
+
   const firstFloorWindowSideBorder = windowsBorders(4,3,1);
   firstFloorWindowSideBorder.position.x = 4;
   firstFloorWindowSideBorder.position.y = 2.8;
   firstFloorWindowSideBorder.position.z = 7;
   firstFloorWindowSideBorder.rotation.y = 0.9;
+
   const foundationfirstFloorFrontRight = houseFoundation();
   foundationfirstFloorFrontRight.position.y = 3.6;
   foundationfirstFloorFrontRight.position.x = 18;
@@ -857,13 +874,13 @@ function house(){
   houseGroup.add(firstFloorWindowSideBorder);
   houseGroup.add(thirdFloorWindowSideLightsOff);
   houseGroup.add(thirdFloorWindowSideLightsOffBorder);
+  houseGroup.add(secondFloorWindowSide);
+  houseGroup.add(secondFloorWindowSideBorder);
   houseGroup.position.y = 20;
   //houseGroup.rotation.y = 3;
   //houseGroup.scale.set(2,2,2);
   scene.add(houseGroup);
 }
-
-
 //second
 function bigHouse(){
   const bigHouseBuilding = new THREE.Group();
@@ -997,8 +1014,8 @@ function bigHouse(){
   windowsBigHouseFirstThird.rotation.y =  1.5;
   const windowBigHouseSecondFirst = windowsBordersBigHouse(4,2,1);
   windowBigHouseSecondFirst.position.x = -40;
-  windowBigHouseSecondFirst.position.y = 10.5;
-  windowBigHouseSecondFirst.position.z = -12.5;
+  windowBigHouseSecondFirst.position.y = 10.8;
+  windowBigHouseSecondFirst.position.z = -12.8;
   windowBigHouseSecondFirst.rotation.y = 1.5;
   const windowBigHouseThirdFirst = windowsBordersBigHouse(6,2,1);
   windowBigHouseThirdFirst.position.x = -62.5;
@@ -1023,8 +1040,8 @@ function bigHouse(){
   windowBigHouseLightsOffOneSecond.rotation.y = 3.05;
   const windowBigHouseLightsOffSecondFirst = windowsnoLights(3,1.5,1);
   windowBigHouseLightsOffSecondFirst.position.x = -39.7;
-  windowBigHouseLightsOffSecondFirst.position.y = 10.5;
-  windowBigHouseLightsOffSecondFirst.position.z = -12.5;
+  windowBigHouseLightsOffSecondFirst.position.y = 10.8;
+  windowBigHouseLightsOffSecondFirst.position.z = -12.8;
   windowBigHouseLightsOffSecondFirst.rotation.y = 1.5;
   const windowBigHouseLightsOffThirdFirst = windowsnoLights(4.5,1.5,1);
   windowBigHouseLightsOffThirdFirst.position.x = -62.5;
@@ -1093,9 +1110,28 @@ function bigHouse(){
   bigHouseBuilding.position.y = 19;
 }
 
+const cloudGeometry = new THREE.BoxGeometry(30,10,20);
+const cloudMaterial = new THREE.MeshBasicMaterial({color: 'white'});
+const cloud = new THREE.Mesh(cloudGeometry,cloudMaterial);
+cloud.position.y = 80;
+cloud.position.x = -50;
+scene.add(cloud);
+
+const cloudSecond = new THREE.Mesh(cloudGeometry,cloudMaterial);
+cloudSecond.position.y = 85;
+cloudSecond.position.x = -60;
+cloudSecond.position.z = -15;
+scene.add(cloudSecond);
 function animate() {
   requestAnimationFrame(animate);
- 
+  cloud.position.x += 0.09;
+  cloudSecond.position.x += 0.09;
+  if(cloud.position.x > 100){
+    cloud.position.x = -50;
+  }
+  if(cloudSecond.position.x > 60){
+    cloudSecond.position.x = -60;
+  }
   controls.update();
   renderer.render(scene, camera);
 }
