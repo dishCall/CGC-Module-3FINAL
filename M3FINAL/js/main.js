@@ -12,18 +12,18 @@ controls.update();
 
 
 firstLayer(500,1,500);
-house();
 roadBuild();
 fenceBuild();
 treeBuild();
 wallBuild();
 electricPoleBuild();
+house();
 bigHouse();
 terrainBuild();
 
 
 
-//Update Second Laters once all object is finish
+
 function firstLayer(height,width,depth){
 const lowerLayerGeometry = new THREE.BoxGeometry(height,width,depth);
 const lowerLayerMaterial = new THREE.MeshBasicMaterial({color: 'green'});
@@ -76,8 +76,6 @@ function terrainBuild(){
 
 }
 function grass(height,width,depth){
-  //add grass texture
-  //Use Road Bump on Road.
   const greenGrassTexture = new THREE.TextureLoader().load("./assets/textures/greengrass.jpg");
   const grassGeometry = new THREE.BoxGeometry(height,width,depth);
   const grassMaterial = new THREE.MeshStandardMaterial({map: greenGrassTexture});
@@ -89,7 +87,7 @@ function grass(height,width,depth){
 }
 
 function electricPole(radi,length){
-  //change to standard
+
   const poleGeometry = new THREE.CapsuleGeometry(radi,length,8,8);
   const poleMaterial = new THREE.MeshStandardMaterial({color: 'rgb(245,200,79)'});
   const pole = new THREE.Mesh(poleGeometry,poleMaterial);
@@ -120,7 +118,6 @@ function boardLink(height,width,depth){
   return boardLinkWood;
 }
 function cityWall(height,width,depth){
-  //add reddish wood texture
   const cityWallTexture = new THREE.TextureLoader().load("./assets/textures/lightbrownwall.jpeg");
   const cityWallGeometry = new THREE.BoxGeometry(height,width,depth);
   const cityWallMaterial = new THREE.MeshBasicMaterial({map: cityWallTexture});
@@ -135,7 +132,6 @@ function cityWallRoof(height,width,depth){
   return cityWallRoof
 }
 function wallTubes(radi,length,capSegment){
-  //grayish metal texture
   const cityTubeTexture = new THREE.TextureLoader().load("./assets/textures/stone.jpg");
   const wallTubesGeometry = new THREE.CapsuleGeometry(radi,length,capSegment);
   const wallTubesMaterial = new THREE.MeshStandardMaterial({map: cityTubeTexture});
@@ -143,7 +139,6 @@ function wallTubes(radi,length,capSegment){
   return wallTubes;
 }
 function road(height,width,depth){
-  //add light texture brick
   const roadTexture = new THREE.TextureLoader().load("./assets/textures/road.jpg");
   const roadGeometry = new THREE.BoxGeometry(height,width,depth);
   const roadMaterial = new THREE.MeshStandardMaterial({map: roadTexture});
@@ -151,14 +146,12 @@ function road(height,width,depth){
   return road;
 }
 function roadBump(height,width,depth){
-  //add light brown stone brick color
   const roadBumpGeometry = new THREE.BoxGeometry(height,width,depth);
   const roadBumpMaterial = new THREE.MeshStandardMaterial({color: 'gray'})
   const roadBump = new THREE.Mesh(roadBumpGeometry,roadBumpMaterial);
   return roadBump;
 }
 function fence(height,width,depth){
-  //add light wood texture
   const fenceTexture = new THREE.TextureLoader().load("./assets/textures/fence.jpg");
   const fenceGeometry = new THREE.BoxGeometry(height,width,depth);
   const fenceMaterial = new THREE.MeshStandardMaterial({map: fenceTexture});
@@ -166,7 +159,6 @@ function fence(height,width,depth){
   return fence;
 }
 function treeWood(height,width,depth){
-  //change color to RGB brownish
   const treeWoodGeometry = new THREE.BoxGeometry(height,width,depth);
   const treeWoodMaterial = new THREE.MeshStandardMaterial({color: 'rgb(101,80,24)'});
   const treeWood = new THREE.Mesh(treeWoodGeometry,treeWoodMaterial);
@@ -174,14 +166,12 @@ function treeWood(height,width,depth){
 }
 function treeWoodLeaf(height,width,depth){
   const treeWoodLeafTextures = new THREE.TextureLoader().load('./assets/textures/leaf.jpg');
-  //find green colored Leaf texture
   const treeWoodLeafGeometry = new THREE.BoxGeometry(height,width,depth);
   const treeWoodLeafMaterial = new THREE.MeshStandardMaterial({map: treeWoodLeafTextures});
   const treeWoodLeaf = new THREE.Mesh(treeWoodLeafGeometry,treeWoodLeafMaterial);
   return treeWoodLeaf;
 }
 function treeWoodLeafSnow(height,width,depth){
-  //snow colored leaf texture
   const treeWoodLeafSnowGeometry = new THREE.BoxGeometry(height,width,depth);
   const treeWoodLeafSnowMaterial = new THREE.MeshBasicMaterial({color:'rgb(196,195,195)'});
   const treeWoodLeafSnow = new THREE.Mesh(treeWoodLeafSnowGeometry,treeWoodLeafSnowMaterial);
@@ -195,7 +185,6 @@ function houseFoundation(){
   return foundation;
 }
 function houseRoofUpper(){
-  //brownish wooden texture
   const roofTexture = new THREE.TextureLoader().load("./assets/textures/lightbrownwall.jpeg");
   const upperRoofGeometry = new THREE.CylinderGeometry(7,7,12,3,1);
   const upperRoofMaterial = new THREE.MeshBasicMaterial({map: roofTexture });
@@ -208,7 +197,6 @@ function windows(height,width,depth){
   const windowsMaterial = new THREE.MeshBasicMaterial({color: 'yellow'});
   const windows = new THREE.Mesh(windowsGeometry,windowsMaterial);
   return windows;
-
 }
 
 function windowsBorders(height,width,depth){
@@ -248,8 +236,6 @@ function wallBigHouseDoor(height,width,depth){
   const wallBigHouseDoors = new THREE.Mesh(wallBigHouseDoorGeometry,wallBigHouseDoorMaterial);
   return wallBigHouseDoors;
 }
-//use to create logo
-
 function logo(height,width,depth){
   const logoShindoGeometry = new THREE.BoxGeometry(height,width,depth);
   const logoShindoMaterial = new THREE.MeshBasicMaterial({color:'gray'});
@@ -285,6 +271,7 @@ function treeBuild(){
   treeBehindSmallHouseLeafSnowSecond.position.z = -30;
   treeBehindSmallHouseLeafSnowSecond.position.y = 42;
   treeBehindSmallHouseLeafSnowSecond.rotation.y = 2;
+
   const treeBehindSmallHouseLeafThird = treeWoodLeaf(25,10,30);
   treeBehindSmallHouseLeafThird.position.x = 2;
   treeBehindSmallHouseLeafThird.position.z = -30;
@@ -296,20 +283,24 @@ function treeBuild(){
   treeBehindBigHouse.position.x = -50;
   treeBehindBigHouse.position.z = -32;
   treeBehindBigHouse.rotation.y = 1;
+
   const treeBehindBigHousePart = treeWood(5,50,10);
   treeBehindBigHousePart.position.x = -50;
   treeBehindBigHousePart.position.z = -32;
   treeBehindBigHousePart.rotation.y = 1;
+
   const treeBehindBigHousePartLeaf = treeWoodLeaf(25,10,25);
   treeBehindBigHousePartLeaf.position.x = -47;
   treeBehindBigHousePartLeaf.position.z = -30;
   treeBehindBigHousePartLeaf.position.y = 50;
   treeBehindBigHousePartLeaf.rotation.y =1;
+
   const treeBehindBigHousePartLeafSecond = treeWoodLeaf(25,10,25);
   treeBehindBigHousePartLeafSecond.position.x = -51;
   treeBehindBigHousePartLeafSecond.position.z = -40;
   treeBehindBigHousePartLeafSecond.position.y = 50;
   treeBehindBigHousePartLeafSecond.rotation.y = 1;
+
   const treeBehindBigHousePartLeafSnow = treeWoodLeafSnow(25,10,25); 
   treeBehindBigHousePartLeafSnow.position.x = -60;
   treeBehindBigHousePartLeafSnow.position.z = -35;
@@ -320,26 +311,31 @@ function treeBuild(){
   treeRightSideSmallHouse.position.x = 20;
   treeRightSideSmallHouse.position.y = 20;
   treeRightSideSmallHouse.position.z = 15;
+
   const treeRightSideSmallHousePart = new treeWood(5,30,5);
   treeRightSideSmallHousePart.position.x = 20;
   treeRightSideSmallHousePart.position.y = 15;
   treeRightSideSmallHousePart.position.z = 15;
   treeRightSideSmallHousePart.rotation.y = 1;
+
   const treeRightSideSmallHouseLeaf = new treeWoodLeaf(25,10,25);
   treeRightSideSmallHouseLeaf.position.x = 20;
   treeRightSideSmallHouseLeaf.position.y = 40;
   treeRightSideSmallHouseLeaf.position.z = 15;
   treeRightSideSmallHouseLeaf.rotation.y = 2;
+
   const treeRightSideSmallHouseLeafSecond = new treeWoodLeaf(25,10,25);
   treeRightSideSmallHouseLeafSecond.position.x = 15;
   treeRightSideSmallHouseLeafSecond.position.y = 45;
   treeRightSideSmallHouseLeafSecond.position.z = 19;
   treeRightSideSmallHouseLeafSecond.rotation.y = 2;
+
   const treeRightSideSmallHouseLeafThird = new treeWoodLeafSnow(25,10,25);
   treeRightSideSmallHouseLeafThird.position.x = 25;
   treeRightSideSmallHouseLeafThird.position.y = 44;
   treeRightSideSmallHouseLeafThird.position.z = 9;
   treeRightSideSmallHouseLeafThird.rotation.y = 2;
+
   treeBuilding.add(treeRightSideSmallHouseLeafThird);
   treeBuilding.add(treeRightSideSmallHouseLeafSecond);
   treeBuilding.add(treeRightSideSmallHouseLeaf);
@@ -361,7 +357,7 @@ function treeBuild(){
 }
 function roadBuild(){
   const roads = new THREE.Group();
-  //h w d
+
   const roadLeftY = road(15,1,50);
   roadLeftY.position.x = -22;
   roadLeftY.position.z = 12;
@@ -380,7 +376,6 @@ function roadBuild(){
   roadLast.position.z = -36;
   roadLast.rotation.y = 3.1;
 
-  //@add gray grass texture
   const grayGrassTexture = new THREE.TextureLoader().load("./assets/textures/graygrass.jpg");
   const grayGrassGeometry = new THREE.BoxGeometry(5,5,5);
   const grayGrassMaterial = new THREE.MeshBasicMaterial({map: grayGrassTexture});
@@ -389,8 +384,8 @@ function roadBuild(){
   grayGrass.position.z = 6.5;
   grayGrass.position.y = -1.5;
   grayGrass.rotation.y = 1.4;
-  const roadBumpMiddleY = roadBump(5,5,10);
 
+  const roadBumpMiddleY = roadBump(5,5,10);
   roadBumpMiddleY.position.x = -35;
   roadBumpMiddleY.position.z = 3;
   roadBumpMiddleY.position.y = -1.4;
@@ -401,16 +396,19 @@ function roadBuild(){
   roadBumpMiddleYSecond.position.z = 7;
   roadBumpMiddleYSecond.position.y = -1.4;
   roadBumpMiddleYSecond.rotation.y = 3.8;
+
   const roadBumpBetweenHouse = roadBump(5,5,10);
   roadBumpBetweenHouse.position.x = -35;
   roadBumpBetweenHouse.position.z = -22;
   roadBumpBetweenHouse.position.y = -1.4;
   roadBumpBetweenHouse.rotation.y = 0.2;
+
   const roadBumpBetweenHouseSecond = roadBump(5,5,10);
   roadBumpBetweenHouseSecond.position.x = -35;
   roadBumpBetweenHouseSecond.position.z = -15;
   roadBumpBetweenHouseSecond.position.y = -1.4;
   roadBumpBetweenHouseSecond.rotation.y = 3;
+
   roads.add(roadBumpBetweenHouseSecond);
   roads.add(roadBumpBetweenHouse);
   roads.add(roadBumpMiddleYSecond);
@@ -427,6 +425,7 @@ function roadBuild(){
 }
 function fenceBuild(){
   const fenceGroup = new THREE.Group();
+
   const fenceNearHouse = fence(30,8,1);
   fenceNearHouse.position.x =-55;
   fenceNearHouse.position.z =7;
@@ -452,14 +451,17 @@ function fenceBuild(){
   fenceNearBigHouse.position.x = -37;
   fenceNearBigHouse.position.z = -36;
   fenceNearBigHouse.rotation.y = -1.6;
+
   const fenceNearBigTree = fence(20,8,1);
   fenceNearBigTree.position.x = -21;
   fenceNearBigTree.position.z = -35;
   fenceNearBigTree.rotation.y = -1.6;
+
   const fenceFrontBigHouse = fence(5,8,1);
   fenceFrontBigHouse.position.x = -68;
   fenceFrontBigHouse.position.z = -9.5;
   fenceFrontBigHouse.rotation.y =3.05;
+
   fenceGroup.add(fenceFrontBigHouse);
   fenceGroup.add(fenceNearHouse);
   fenceGroup.add(fenceNearSmallHouse);
@@ -472,6 +474,7 @@ function fenceBuild(){
 }
 function electricPoleBuild(){
 const electricPoleGroup = new THREE.Group();
+
 const electricPoleNearSmallHouse = electricPole(0.5,22);
 electricPoleNearSmallHouse.position.x = -18;
 electricPoleNearSmallHouse.position.y = 3;
@@ -500,30 +503,34 @@ electricLightbulb.position.x = -23.2;
 electricLightbulb.position.y = 12;
 electricLightbulb.position.z = -8;
 electricLightbulb.scale.set(0.2,0.2,0.2);
+
 const poleLighting = new THREE.PointLight( 0xff0000, 2.5, 60 );
 poleLighting.position.set( -23.2, 11, -8 );
-scene.add( poleLighting );
 const electricPoleNearBigHouse = electricPole(0.5,22);
 electricPoleNearBigHouse.position.x = -43;
 electricPoleNearBigHouse.position.z = 9.2;
+
 const electricPoleNearBigHouseTop = electricPole(0.5,6);
 electricPoleNearBigHouseTop.position.x = -42.87;
 electricPoleNearBigHouseTop.position.y = 8;
 electricPoleNearBigHouseTop.position.z = 6.5;
 electricPoleNearBigHouseTop.rotation.x = 1.5;
 electricPoleNearBigHouseTop.rotation.y = 3.5;
+
 const electricPoleNearBigHouseMostTop = electricPole(0.5,5);
 electricPoleNearBigHouseMostTop.position.x = -42.87;
 electricPoleNearBigHouseMostTop.position.y = 10.5;
 electricPoleNearBigHouseMostTop.position.z = 7;
 electricPoleNearBigHouseMostTop.rotation.x = 1.5;
 electricPoleNearBigHouseMostTop.rotation.y = 3.5;
+
 const electricLightPoleNearBigHouse = electricLightsPole(0.5,9);
 electricLightPoleNearBigHouse.position.x = -42.87;
 electricLightPoleNearBigHouse.position.y = 9.2;
 electricLightPoleNearBigHouse.position.z = 5.5;
 electricLightPoleNearBigHouse.rotation.x = 1.5;
 electricLightPoleNearBigHouse.rotation.y = 3.5;
+
 const electricLightbulbPoleNearBigHouse = PoleLight(3,5,10);
 electricLightbulbPoleNearBigHouse.position.x = -42.87;
 electricLightbulbPoleNearBigHouse.position.y = 8.5;
@@ -531,7 +538,7 @@ electricLightbulbPoleNearBigHouse.position.z = 1.5;
 electricLightbulbPoleNearBigHouse.scale.set(0.2,0.2,0.2);
 const poleLightingNearBigHouse = new THREE.PointLight( 0xff0000, 2.5, 60 );
 poleLightingNearBigHouse.position.set( -42.87, 8.5, 1.5 );
-scene.add( poleLighting )
+
 electricPoleGroup.add(electricLightbulbPoleNearBigHouse)
 electricPoleGroup.add(electricLightPoleNearBigHouse);
 electricPoleGroup.add(electricPoleNearBigHouseMostTop);
@@ -543,28 +550,34 @@ electricPoleGroup.add(electricPoleNearSmallHouseMostTop);
 electricPoleGroup.add(electricPoleNearSmallHouseTop);
 electricPoleGroup.add(electricPoleNearSmallHouse);
 scene.add(electricPoleGroup);
-
+scene.add( poleLighting );
+scene.add( poleLightingNearBigHouse );
 electricPoleGroup.position.y = 19;
 }
 function wallBuild(){
   const wallBuilding = new THREE.Group();
+
   const gateWall = cityWall(14,50,3);
   gateWall.position.x = -44;
   gateWall.position.y = 17;
   gateWall.position.z = -48;
+
   const gateSideWall = cityWall(30,50,3);
   gateSideWall.position.x = -55;
   gateSideWall.position.y = 13;
   gateSideWall.position.z = -48;
+
   const gateWallRight = cityWall(14,50,3);
   gateWallRight.position.x = -14;
   gateWallRight.position.y = 17;
   gateWallRight.position.z = -47;
+
   const gateSideWallRight = cityWall(24,50,3);
   gateSideWallRight.position.x = 2;
   gateSideWallRight.position.y = 13;
   gateSideWallRight.position.z = -45;
   gateSideWallRight.rotation.y = 3;
+
   const gateSideWallRightFar = cityWall(26,50,3);
   gateSideWallRightFar.position.x = 17;
   gateSideWallRightFar.position.y = 13;
@@ -575,28 +588,31 @@ function wallBuild(){
   gateWallTop.position.x = -29;
   gateWallTop.position.y = 38;
   gateWallTop.position.z = -47;
+
   const wallTubeLeft = wallTubes(2,5,4);
   wallTubeLeft.position.x = -37;
   wallTubeLeft.position.y = 15;
   wallTubeLeft.position.z = -47;
   wallTubeLeft.scale.set(1,5.5,2);
+
   const wallTubeRight = wallTubes(2,5,4);
   wallTubeRight.position.x = -21;
   wallTubeRight.position.y = 15;
   wallTubeRight.position.z = -47;
   wallTubeRight.scale.set(1,5.5,2);
+
   const wallTubeTop = wallTubes(2,5,5);
   wallTubeTop.position.x = -29;
   wallTubeTop.position.y = 34;
   wallTubeTop.position.z = -47;
   wallTubeTop.rotation.z = 4.7;
   wallTubeTop.scale.set(1,2,2);
+
   const wallTubeTopMiddle = wallTubes(3,3,3);
   wallTubeTopMiddle.position.x = -29;
   wallTubeTopMiddle.position.y = 38;
   wallTubeTopMiddle.position.z = -49;
   wallTubeTopMiddle.scale.set(1,1,2);
-
 
   const wallRoofCityMiddle = cityWallRoof(1,5,44);
   wallRoofCityMiddle.position.x = -29;
@@ -624,6 +640,7 @@ function wallBuild(){
   wallRoofCityRightFar.position.z = -35;
   wallRoofCityRightFar.rotation.z = 4;
   wallRoofCityRightFar.rotation.y = 4.1;
+
   wallBuilding.add(wallRoofCityRightFar);
   wallBuilding.add(wallRoofCityRight);
   wallBuilding.add(wallRoofCityLeft);
@@ -645,7 +662,7 @@ function wallBuild(){
 //house Right Side
 function house(){
   const houseGroup = new THREE.Group();
-  //add light brownish texture
+
   const bodyHouseTexture = new THREE.TextureLoader().load("./assets/textures/lightbrownwall.jpeg")
   const houseLowerGeometry = new THREE.BoxGeometry (15,10,15);
   const houseLowerMaterial = new THREE.MeshStandardMaterial({map: bodyHouseTexture});
@@ -657,14 +674,14 @@ function house(){
   const houseMiddle = new THREE.Mesh(houseMiddleGeometry,houseMiddleMaterial);
   houseMiddle.position.y = 14;
   houseMiddle.rotation.y = 11.9;
-  //add dark green wooden texture
+
   const darkGreenRoofTexture = new THREE.TextureLoader().load("./assets/textures/roofandwindow.jpg");
   const roofLowerGeometry = new THREE.CylinderGeometry(10,20,5,4);
   const roofLowerMaterial = new THREE.MeshStandardMaterial({map: darkGreenRoofTexture});
   const roofLower = new THREE.Mesh(roofLowerGeometry,roofLowerMaterial);
   roofLower.position.y = 10;
   roofLower.rotation.y = 0.1;
-  //add  dark green wooden texture.
+
   const roofMiddleGeometry = new THREE.CylinderGeometry(9,14,5,4)
   const roofMiddleMaterial = new THREE.MeshStandardMaterial({map: darkGreenRoofTexture})
   const roofMiddle = new THREE.Mesh(roofMiddleGeometry,roofMiddleMaterial);
@@ -677,7 +694,7 @@ function house(){
   roofUpper.rotation.x = 240.35;
   roofUpper.rotation.z = 0.9;
 
-  //add dark green wooden texture
+
   const roofWallSenGeometry = new THREE.CylinderGeometry(8,8,11,3,1);
   const roofWallSenMaterial = new THREE.MeshStandardMaterial({map: darkGreenRoofTexture});
   const roofWallSen = new THREE.Mesh(roofWallSenGeometry,roofWallSenMaterial);
@@ -695,7 +712,7 @@ function house(){
   windowWall.rotation.y = 2.5;
   windowWall.rotation.z = -1;
 
-  //dark green texture
+
   const WindowSecondFloorGeometry = new THREE.BoxGeometry(1,3,3);
   const WindowSecondFloorMaterial = new THREE.MeshBasicMaterial({map: darkGreenRoofTexture});
   const windowSecondFloor = new THREE.Mesh(WindowSecondFloorGeometry,WindowSecondFloorMaterial);
@@ -722,8 +739,6 @@ function house(){
   doorBoxHead.position.z = 8.2;
   doorBoxHead.rotation.y = -2.2;
 
-
-  //add  light here
   const width = 10;
   const height = 10;
   const intensity = 0.3;
@@ -733,29 +748,27 @@ function house(){
   scene.add( rectLight )
 
   const windowsLightOn = windows(1,3,3);
-  const windowsLightOnBorder = windowsBorders(1,4,4);
   windowsLightOn.position.y = 4;
   windowsLightOn.position.x = -8;
   windowsLightOn.position.z = 3;
   windowsLightOn.rotation.y = -2.2;
+  const windowsLightOnBorder = windowsBorders(1,4,4);
+
   windowsLightOnBorder.position.y =4;
   windowsLightOnBorder.position.x = -7.9;
   windowsLightOnBorder.position.z = 3;
   windowsLightOnBorder.rotation.y = -2.2;
 
-  const secondWindowsLightOn = windows(3,2,1);
-  const secondWindowsLightOnBorder = windowsBorders(4,3,1);
-
-  //add LIGHT HERE
-
   const secondWindowsLight = new THREE.PointLight( 0xff0000, 1, 140 );
   secondWindowsLight.position.set( 8, 3, 2.5 );
   scene.add( secondWindowsLight );
+  const secondWindowsLightOn = windows(3,2,1);
   secondWindowsLightOn.position.y = 3;
   secondWindowsLightOn.position.x = 8;
   secondWindowsLightOn.position.z = 2.5;
   secondWindowsLightOn.rotation.y = -2.2;
 
+  const secondWindowsLightOnBorder = windowsBorders(4,3,1);
   secondWindowsLightOnBorder.position.y =3;
   secondWindowsLightOnBorder.position.x =7.8;
   secondWindowsLightOnBorder.position.z =2;
@@ -763,11 +776,11 @@ function house(){
 
   const firstFloorWindowLightsOff = windowsnoLights(3,2,1);
   firstFloorWindowLightsOff.position.y = 2;
-  firstFloorWindowLightsOff.position.x = -6.5; // -6.5;
+  firstFloorWindowLightsOff.position.x = -6.5; 
   firstFloorWindowLightsOff.position.z = -4;
   firstFloorWindowLightsOff.rotation.y = -2.2;
 
-  //add dark greenish texture
+  
   const windowFirstFloorLightsOffGeometry = new THREE.BoxGeometry(3,1,8);
   const windowFirstFloorLightsOffMaterial = new THREE.MeshBasicMaterial({map: darkGreenRoofTexture});
   const windowFirstFloorLightsOff = new THREE.Mesh(windowFirstFloorLightsOffGeometry,windowFirstFloorLightsOffMaterial);
@@ -776,7 +789,7 @@ function house(){
   windowFirstFloorLightsOff.position.z = -5;
   windowFirstFloorLightsOff.rotation.y = -3.8;
   windowFirstFloorLightsOff.rotation.z = 2.2;
-  //add dark greenish texture
+ 
   const windowSecondFloorNoLightSideGeometry = new THREE.BoxGeometry(3,1,8);
   const windowSecondFloorNoLightSideMaterial = new THREE.MeshBasicMaterial({map: darkGreenRoofTexture});
   const windowSecondFloorNoLightSide = new THREE.Mesh(windowSecondFloorNoLightSideGeometry,windowSecondFloorNoLightSideMaterial);
@@ -792,6 +805,7 @@ function house(){
   secondFloorWindowFrontLightsOff.position.y = 14.8;
   secondFloorWindowFrontLightsOff.position.z = 3.5;
   secondFloorWindowFrontLightsOff.rotation.y = 2.4;
+
   const secondFloorWindowFrontBorder = windowsBorders(4,3,1);
   secondFloorWindowFrontBorder.position.x = -6;
   secondFloorWindowFrontBorder.position.y = 14.8;
@@ -809,6 +823,7 @@ function house(){
   thirdFloorWindowSideLightsOffBorder.position.y = 24;
   thirdFloorWindowSideLightsOffBorder.position.z = -3.3;
   thirdFloorWindowSideLightsOffBorder.rotation.y = 0.9;
+
   const firstFloorWindowSide = windowsnoLights(3,2,1);
   firstFloorWindowSide.position.x = 4.2;
   firstFloorWindowSide.position.y = 2.8;
@@ -837,20 +852,22 @@ function house(){
   foundationfirstFloorFrontRight.position.y = 3.6;
   foundationfirstFloorFrontRight.position.x = 18;
   foundationfirstFloorFrontRight.position.z = -2;
+
   const foundationfirstFloorFrontLeft = houseFoundation();
   foundationfirstFloorFrontLeft.position.y = 3.5;
-  foundationfirstFloorFrontLeft.position.x = 2; // 3
+  foundationfirstFloorFrontLeft.position.x = 2; 
   foundationfirstFloorFrontLeft.position.z = 16;
+
   const foundationfirstFloorBackLeft = houseFoundation();
   foundationfirstFloorBackLeft.position.y = 3.5;
-  foundationfirstFloorBackLeft.position.x = -17; // -15
+  foundationfirstFloorBackLeft.position.x = -17;
   foundationfirstFloorBackLeft.position.z = 1;
+
  const foundationfirstFloorBackRight = houseFoundation();
   foundationfirstFloorBackRight.position.y= 3.5;
   foundationfirstFloorBackRight.position.x= -2;
   foundationfirstFloorBackRight.position.z = -18.5;
 
-  //second floor foundation
   const foundationSecondFloorFrontRight = houseFoundation();
   foundationSecondFloorFrontRight.position.y = 12.5;
   foundationSecondFloorFrontRight.position.x = 12;
@@ -878,20 +895,27 @@ function house(){
   door.rotation.y = -2.2;
 
 
-  //sign board
+
   const boardWoodLink = boardLink(1,1,3);
   boardWoodLink.position.x = -12;
   boardWoodLink.position.y = 13;
   boardWoodLink.position.z = -2.5;
   boardWoodLink.scale.set(1,1,5);
   boardWoodLink.rotation.y = 4.7;
+
   const boardWoodSignBorder = boardSignBorder(1,10,5);
   boardWoodSignBorder.position.x = -20;
   boardWoodSignBorder.position.y = 13;
   boardWoodSignBorder.position.z = -2;
   boardWoodSignBorder.rotation.y = 1.5;
-  //add texture here.. for image
 
+  const logoShindoHouse = logo(1,8,4);
+  logoShindoHouse.position.x = -20;
+  logoShindoHouse.position.y = 13;
+  logoShindoHouse.position.z = -1.5;
+  logoShindoHouse.rotation.y = 1.5;
+
+  houseGroup.add(logoShindoHouse);
   houseGroup.add(boardWoodSignBorder);
   houseGroup.add(boardWoodLink);
   houseGroup.add(windowFirstFloorLightsOff);
@@ -929,18 +953,19 @@ function house(){
   houseGroup.add(secondFloorWindowSide);
   houseGroup.add(secondFloorWindowSideBorder);
   houseGroup.position.y = 20;
-  //houseGroup.rotation.y = 3;
-  //houseGroup.scale.set(2,2,2);
+  
   scene.add(houseGroup);
 }
 //house Left Side
 function bigHouse(){
   const bigHouseBuilding = new THREE.Group();
+
   const lowerBigHouse = bigHouseBlocks(30,10,10);
   lowerBigHouse.position.x = -53;
   lowerBigHouse.position.y = 3;
   lowerBigHouse.position.z = -14;
   lowerBigHouse.rotation.y = 3.05;
+
   const MiddleBigHouse = bigHouseBlocks(28,8.3,5);
   MiddleBigHouse.position.x = -53.5;
   MiddleBigHouse.position.y = 10;
@@ -953,31 +978,34 @@ function bigHouse(){
   UpperBigHouse.position.z = -14.5;
   UpperBigHouse.rotation.y = 3.05;
 
-
   const topMostRoof = RoofbigHouse();
   topMostRoof.position.x = -62.5;
   topMostRoof.position.y = 18;
   topMostRoof.position.z = -14.5;
   topMostRoof.scale.set(2,1,2)
   topMostRoof.rotation.y = 5.4;
+
   const middleRoofPartFirst = RoofbigHouse();
   middleRoofPartFirst.position.x = -63.2;
   middleRoofPartFirst.position.y = 13;
   middleRoofPartFirst.position.z = -14.8;
   middleRoofPartFirst.scale.set(2,1,2);
   middleRoofPartFirst.rotation.y = 5.4;
+
   const middleRoofPartSecond = RoofbigHouse();
   middleRoofPartSecond.position.x = -55;
   middleRoofPartSecond.position.y = 13;
   middleRoofPartSecond.position.z = -13.9;
   middleRoofPartSecond.scale.set(2,1,2);
   middleRoofPartSecond.rotation.y = 5.4;
+
   const middleRoofPartThird = RoofbigHouse();
   middleRoofPartThird.position.x = -46.5;
   middleRoofPartThird.position.y = 13;
   middleRoofPartThird.position.z = -13;
   middleRoofPartThird.scale.set(2,1,2);
   middleRoofPartThird.rotation.y = 5.4;
+
   const middleRoofPartFourth = RoofbigHouse();
   middleRoofPartFourth.position.x = -43.8;
   middleRoofPartFourth.position.y = 13;
@@ -991,18 +1019,21 @@ function bigHouse(){
   bottomRoofPartFirst.position.z = -15;
   bottomRoofPartFirst.scale.set(2,1,2.2);
   bottomRoofPartFirst.rotation.y = 5.4;
+
   const bottomRoofPartSecond = RoofbigHouse();
   bottomRoofPartSecond.position.x = -55;
   bottomRoofPartSecond.position.y = 8;
   bottomRoofPartSecond.position.z = -14.3;
   bottomRoofPartSecond.scale.set(2,1,2.2);
   bottomRoofPartSecond.rotation.y = 5.4;
+
   const bottomRoofPartThird = RoofbigHouse();
   bottomRoofPartThird.position.x = -47.4;
   bottomRoofPartThird.position.y = 8;
   bottomRoofPartThird.position.z = -13.5;
   bottomRoofPartThird.scale.set(2,1,2.2);
   bottomRoofPartThird.rotation.y = 5.4;
+
   const bottomRoofPartFourth = RoofbigHouse();
   bottomRoofPartFourth.position.x = -42;
   bottomRoofPartFourth.position.y = 8;
@@ -1014,10 +1045,12 @@ function bigHouse(){
   doorBuildFirst.position.x = -60;
   doorBuildFirst.position.y = 3;
   doorBuildFirst.position.z = -9;
+
   const doorBuildFirstPartSecond = wallBigHouseDoor(1,5,5);
   doorBuildFirstPartSecond.position.x = -64;
   doorBuildFirstPartSecond.position.y = 3;
   doorBuildFirstPartSecond.position.z = -9;
+
   const doorBuildFirstPartTop = wallBigHouseDoor(6,1,5);
   doorBuildFirstPartTop.position.x = -62;
   doorBuildFirstPartTop.position.y = 6;
@@ -1028,6 +1061,7 @@ function bigHouse(){
   doorBuildThird.position.y = 15.5;
   doorBuildThird.position.z = -15.5;
   doorBuildThird.rotation.y = 1.5;
+
   const doorBuildThirdPartSecond = wallBigHouseDoor(1,3,3);
   doorBuildThirdPartSecond.position.x = -57;
   doorBuildThirdPartSecond.position.y = 15.5;
@@ -1045,30 +1079,41 @@ function bigHouse(){
   PoleBoardLinkSecond.position.z = -4;
   PoleBoardLinkSecond.rotation.y = 3.2;
   PoleBoardLinkSecond.scale.set(1,1,5);
+
   const PoleBillBoardSecond = boardSignBorder(1,5,5);
   PoleBillBoardSecond.position.x = -48;
   PoleBillBoardSecond.position.y = 10;
   PoleBillBoardSecond.position.z = 2;
+
+  const logoShindoBigHouseBillBoard = logo(1,4,4);
+  logoShindoBigHouseBillBoard.position.x = -47.8;
+  logoShindoBigHouseBillBoard.position.y = 10;
+  logoShindoBigHouseBillBoard.position.z = 2;
+  
   const windowsBigHouseFirst = windowsBordersBigHouse(7,3,1);
   windowsBigHouseFirst.position.x = -45;
   windowsBigHouseFirst.position.y = 3.5;
   windowsBigHouseFirst.position.z = -8.5;
   windowsBigHouseFirst.rotation.y = 3.05;
+
   const windowsBigHouseFirstSecond = windowsBordersBigHouse(7,3,1);
   windowsBigHouseFirstSecond.position.x = -55;
   windowsBigHouseFirstSecond.position.y = 3.5;
   windowsBigHouseFirstSecond.position.z = -9.5;
   windowsBigHouseFirstSecond.rotation.y = 3.05;
+
   const windowsBigHouseFirstThird = windowsBordersBigHouse(7,3,1);
   windowsBigHouseFirstThird.position.x = -38.4;
   windowsBigHouseFirstThird.position.y =  3.5;
   windowsBigHouseFirstThird.position.z = -12.5;
   windowsBigHouseFirstThird.rotation.y =  1.5;
+
   const windowBigHouseSecondFirst = windowsBordersBigHouse(4,2,1);
   windowBigHouseSecondFirst.position.x = -40;
   windowBigHouseSecondFirst.position.y = 10.8;
   windowBigHouseSecondFirst.position.z = -12.8;
   windowBigHouseSecondFirst.rotation.y = 1.5;
+
   const windowBigHouseThirdFirst = windowsBordersBigHouse(6,2,1);
   windowBigHouseThirdFirst.position.x = -62.5;
   windowBigHouseThirdFirst.position.y = 15.5;
@@ -1083,21 +1128,25 @@ function bigHouse(){
   windowBigHouseLightsOn.position.y = 3.5;
   windowBigHouseLightsOn.position.z = -12.5;
   windowBigHouseLightsOn.rotation.y = 1.5;
+
   const windowBigHouseLightsOffOneFirst =  windowsnoLights(5,2,1);
   windowBigHouseLightsOffOneFirst.position.x =-45;
   windowBigHouseLightsOffOneFirst.position.y = 3.5;
   windowBigHouseLightsOffOneFirst.position.z = -8.2;
   windowBigHouseLightsOffOneFirst.rotation.y = 3.05;
+
   const windowBigHouseLightsOffOneSecond = windowsnoLights(5,2,1);
   windowBigHouseLightsOffOneSecond.position.x = -55;
   windowBigHouseLightsOffOneSecond.position.y = 3.5;
   windowBigHouseLightsOffOneSecond.position.z = -9.2;
   windowBigHouseLightsOffOneSecond.rotation.y = 3.05;
+
   const windowBigHouseLightsOffSecondFirst = windowsnoLights(3,1.5,1);
   windowBigHouseLightsOffSecondFirst.position.x = -39.7;
   windowBigHouseLightsOffSecondFirst.position.y = 10.8;
   windowBigHouseLightsOffSecondFirst.position.z = -12.8;
   windowBigHouseLightsOffSecondFirst.rotation.y = 1.5;
+
   const windowBigHouseLightsOffThirdFirst = windowsnoLights(4.5,1.5,1);
   windowBigHouseLightsOffThirdFirst.position.x = -62.5;
   windowBigHouseLightsOffThirdFirst.position.y = 15.5;
@@ -1109,16 +1158,19 @@ function bigHouse(){
   groundBufferBigHouse.position.x = -53;
   groundBufferBigHouse.position.z = -14;
   groundBufferBigHouse.rotation.y = 3.05;
+
   const groundBufferSecondBigHouse = bigHouseFlatBuffer(29,1,6);
   groundBufferSecondBigHouse.position.x = -53.5;
   groundBufferSecondBigHouse.position.y = 9;
   groundBufferSecondBigHouse.position.z = -14;
   groundBufferSecondBigHouse.rotation.y = 3.05;
+
   const groundBufferThirdBigHouse = bigHouseFlatBuffer(29,1,6);
   groundBufferThirdBigHouse.position.x = -53.5;
   groundBufferThirdBigHouse.position.y = 13.8;
   groundBufferThirdBigHouse.position.z = -14;
   groundBufferThirdBigHouse.rotation.y = 3.05;
+
   const brownGroundBuffThirdBigHouseGeometry = new THREE.BoxGeometry(18.6,1,6.2);
   const brownGroundBuffThirdBigHouseMaterial = new THREE.MeshBasicMaterial({color: 'rgb(88,77,45)'});
   const brownGroundBuffThirdBigHouse = new THREE.Mesh(brownGroundBuffThirdBigHouseGeometry,brownGroundBuffThirdBigHouseMaterial);
@@ -1161,6 +1213,7 @@ function bigHouse(){
   bigHouseBuilding.add(UpperBigHouse);
   bigHouseBuilding.add(MiddleBigHouse);
   bigHouseBuilding.add(lowerBigHouse);
+  bigHouseBuilding.add(logoShindoBigHouseBillBoard);
   scene.add(bigHouseBuilding);
   bigHouseBuilding.position.y = 19;
 }
@@ -1179,7 +1232,7 @@ cloudSecond.position.x = -60;
 cloudSecond.position.z = -15;
 scene.add(cloudSecond);
 
-const allLightsAmbient = new THREE.AmbientLight( 0x000000 ); // soft white light
+const allLightsAmbient = new THREE.AmbientLight( 0x000000 ); 
 scene.add( allLightsAmbient );
 
 const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 , 5);
