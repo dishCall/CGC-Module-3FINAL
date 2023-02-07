@@ -10,18 +10,16 @@ const controls = new OrbitControls( camera, renderer.domElement );
 camera.position.set( 0, 20, 100 );
 controls.update();
 
-
+//recreation build
 firstLayer(500,1,500);
 roadBuild();
 fenceBuild();
 treeBuild();
 wallBuild();
 electricPoleBuild();
-house();
+houseBuild();
 bigHouse();
 terrainBuild();
-
-
 
 
 function firstLayer(height,width,depth){
@@ -41,48 +39,15 @@ scene.add(secondLayer);
 secondLayer.position.y = 8;
 return secondLayer;
 }
-//terrain
-function terrainBuild(){
-  const terrainGroup = new THREE.Group();
-  const terrainRight = secondLayerTerrain(55,20,40);
-  terrainRight.position.x = -4;
-  terrainRight.position.z = 6.2;
-  terrainRight.rotation.y = 2.45;
-  const terrainRightBack = secondLayerTerrain(55,20,60);
-  terrainRightBack.position.x = 2;
-  terrainRightBack.position.z = -22;
-  const terrainLeft = secondLayerTerrain(65,20,60);
-  terrainLeft.position.x = -50;
-  terrainLeft.position.z = -23.8;
-  terrainLeft.rotation.y = 1.45;
-  const grassRight = grass(55,1,40);
-  grassRight.position.x = -4;
-  grassRight.position.z = 6.2;
-  grassRight.rotation.y = 2.45;
-  const grassRightBack = grass(55,1,60);
-  grassRightBack.position.x = 2;
-  grassRightBack.position.z = -22;
-  const grassLeft = grass(65,1,60);
-  grassLeft.position.x = -50;
-  grassLeft.position.z = -23.8;
-  grassLeft.rotation.y = 1.45;
-  terrainGroup.add(grassLeft);
-  terrainGroup.add(grassRightBack);
-  terrainGroup.add(grassRight);
-  terrainGroup.add(terrainRightBack);
-  terrainGroup.add(terrainLeft);
-  terrainGroup.add(terrainRight);
-  scene.add(terrainGroup);
 
-}
 function grass(height,width,depth){
   const greenGrassTexture = new THREE.TextureLoader().load("./assets/textures/greengrass.jpg");
   const grassGeometry = new THREE.BoxGeometry(height,width,depth);
   const grassMaterial = new THREE.MeshStandardMaterial({map: greenGrassTexture});
   const grass = new THREE.Mesh(grassGeometry,grassMaterial);
   scene.add(grass);
-  grass.position.y = 18.5;
   grass.position.x = -35;
+  grass.position.y = 18.5;
   return grass;
 }
 
@@ -247,6 +212,46 @@ function RoofbigHouse(){
   const bigHouseRoof = new THREE.Mesh(bigHouseRoofGeometry,bighouseRoofMaterial);
   return bigHouseRoof;
 }
+
+function terrainBuild(){
+  const terrainGroup = new THREE.Group();
+  const terrainRight = secondLayerTerrain(55,20,40);
+  terrainRight.position.x = -4;
+  terrainRight.position.z = 6.2;
+  terrainRight.rotation.y = 2.45;
+  
+  const terrainRightBack = secondLayerTerrain(55,20,60);
+  terrainRightBack.position.x = 2;
+  terrainRightBack.position.z = -22;
+
+  const terrainLeft = secondLayerTerrain(65,20,60);
+  terrainLeft.position.x = -50;
+  terrainLeft.position.z = -23.8;
+  terrainLeft.rotation.y = 1.45;
+
+  const grassRight = grass(55,1,40);
+  grassRight.position.x = -4;
+  grassRight.position.z = 6.2;
+  grassRight.rotation.y = 2.45;
+
+  const grassRightBack = grass(55,1,60);
+  grassRightBack.position.x = 2;
+  grassRightBack.position.z = -22;
+
+  const grassLeft = grass(65,1,60);
+  grassLeft.position.x = -50;
+  grassLeft.position.z = -23.8;
+  grassLeft.rotation.y = 1.45;
+  
+  terrainGroup.add(grassLeft);
+  terrainGroup.add(grassRightBack);
+  terrainGroup.add(grassRight);
+  terrainGroup.add(terrainRightBack);
+  terrainGroup.add(terrainLeft);
+  terrainGroup.add(terrainRight);
+  scene.add(terrainGroup);
+
+}
 function treeBuild(){
   const treeBuilding = new THREE.Group();
 
@@ -257,24 +262,24 @@ function treeBuild(){
 
   const treeBehindSmallHousePart = treeWood(5,30,10)
   treeBehindSmallHousePart.position.x = -10;
-  treeBehindSmallHousePart.position.z = -30;
   treeBehindSmallHousePart.position.y = 10;
+  treeBehindSmallHousePart.position.z = -30;
 
   const treeBehindSmallHouseLeaf = treeWoodLeaf(25,10,25);
   treeBehindSmallHouseLeaf.position.x = -10;
-  treeBehindSmallHouseLeaf.position.z = -30;
   treeBehindSmallHouseLeaf.position.y = 40;
+  treeBehindSmallHouseLeaf.position.z = -30;
 
   const treeBehindSmallHouseLeafSnowSecond = treeWoodLeafSnow(25,10,25);
   treeBehindSmallHouseLeafSnowSecond.position.x = -20;
-  treeBehindSmallHouseLeafSnowSecond.position.z = -30;
   treeBehindSmallHouseLeafSnowSecond.position.y = 42;
+  treeBehindSmallHouseLeafSnowSecond.position.z = -30;
   treeBehindSmallHouseLeafSnowSecond.rotation.y = 2;
 
   const treeBehindSmallHouseLeafThird = treeWoodLeaf(25,10,30);
   treeBehindSmallHouseLeafThird.position.x = 2;
-  treeBehindSmallHouseLeafThird.position.z = -30;
   treeBehindSmallHouseLeafThird.position.y = 43;
+  treeBehindSmallHouseLeafThird.position.z = -30;
   treeBehindSmallHouseLeafThird.rotation.y = 1;
 
 
@@ -290,20 +295,20 @@ function treeBuild(){
 
   const treeBehindBigHousePartLeaf = treeWoodLeaf(25,10,25);
   treeBehindBigHousePartLeaf.position.x = -47;
-  treeBehindBigHousePartLeaf.position.z = -30;
   treeBehindBigHousePartLeaf.position.y = 50;
+  treeBehindBigHousePartLeaf.position.z = -30;
   treeBehindBigHousePartLeaf.rotation.y =1;
 
   const treeBehindBigHousePartLeafSecond = treeWoodLeaf(25,10,25);
   treeBehindBigHousePartLeafSecond.position.x = -51;
-  treeBehindBigHousePartLeafSecond.position.z = -40;
   treeBehindBigHousePartLeafSecond.position.y = 50;
+  treeBehindBigHousePartLeafSecond.position.z = -40;
   treeBehindBigHousePartLeafSecond.rotation.y = 1;
 
   const treeBehindBigHousePartLeafSnow = treeWoodLeafSnow(25,10,25); 
   treeBehindBigHousePartLeafSnow.position.x = -60;
-  treeBehindBigHousePartLeafSnow.position.z = -35;
   treeBehindBigHousePartLeafSnow.position.y = 52;
+  treeBehindBigHousePartLeafSnow.position.z = -35;
   treeBehindBigHousePartLeafSnow.rotation.y = 1;
 
   const treeRightSideSmallHouse = treeWood(5,40,5);
@@ -380,8 +385,8 @@ function roadBuild(){
   const grayGrassMaterial = new THREE.MeshBasicMaterial({map: grayGrassTexture});
   const grayGrass = new THREE.Mesh(grayGrassGeometry,grayGrassMaterial);
   grayGrass.position.x = -47;
-  grayGrass.position.z = 6.5;
   grayGrass.position.y = -1.5;
+  grayGrass.position.z = 6.5;
   grayGrass.rotation.y = 1.4;
 
   const roadBumpMiddleY = roadBump(5,5,10);
@@ -392,20 +397,20 @@ function roadBuild(){
   
   const roadBumpMiddleYSecond = roadBump(5,5,10);
   roadBumpMiddleYSecond.position.x = -31;
-  roadBumpMiddleYSecond.position.z = 7;
   roadBumpMiddleYSecond.position.y = -1.4;
+  roadBumpMiddleYSecond.position.z = 7;
   roadBumpMiddleYSecond.rotation.y = 3.8;
 
   const roadBumpBetweenHouse = roadBump(5,5,10);
   roadBumpBetweenHouse.position.x = -35;
-  roadBumpBetweenHouse.position.z = -22;
   roadBumpBetweenHouse.position.y = -1.4;
+  roadBumpBetweenHouse.position.z = -22;
   roadBumpBetweenHouse.rotation.y = 0.2;
 
   const roadBumpBetweenHouseSecond = roadBump(5,5,10);
   roadBumpBetweenHouseSecond.position.x = -35;
-  roadBumpBetweenHouseSecond.position.z = -15;
   roadBumpBetweenHouseSecond.position.y = -1.4;
+  roadBumpBetweenHouseSecond.position.z = -15;
   roadBumpBetweenHouseSecond.rotation.y = 3;
 
   roads.add(roadBumpBetweenHouseSecond);
@@ -417,8 +422,8 @@ function roadBuild(){
   roads.add(roadLeftY);
   roads.add(grayGrass);
   roads.add(roadBumpMiddleY);
-  roads.position.y = 19;
   roads.position.x = 8;
+  roads.position.y = 19;
   roads.position.z = 2;
   scene.add(roads);
 }
@@ -439,7 +444,6 @@ function fenceBuild(){
   fenceNearSmallHouseSecond.position.x = -1;
   fenceNearSmallHouseSecond.position.z = 16;
   fenceNearSmallHouseSecond.rotation.y = 2.47;
-
 
   const fenceSmallDistanceHouse = fence(15,8,1);
   fenceSmallDistanceHouse.position.x = -23;
@@ -659,7 +663,7 @@ function wallBuild(){
 
 }
 //house Right Side
-function house(){
+function houseBuild(){
   const houseGroup = new THREE.Group();
 
   const bodyHouseTexture = new THREE.TextureLoader().load("./assets/textures/lightbrownwall.jpeg")
@@ -689,52 +693,49 @@ function house(){
   
   const roofUpper = houseRoofUpper();
   roofUpper.position.y = 22.5;
-  roofUpper.rotation.y = 3.1;
   roofUpper.rotation.x = 240.35;
+  roofUpper.rotation.y = 3.1;
   roofUpper.rotation.z = 0.9;
-
 
   const roofWallSenGeometry = new THREE.CylinderGeometry(8,8,11,3,1);
   const roofWallSenMaterial = new THREE.MeshStandardMaterial({map: darkGreenRoofTexture});
   const roofWallSen = new THREE.Mesh(roofWallSenGeometry,roofWallSenMaterial);
   roofWallSen.position.y = 22.8;
-  roofWallSen.rotation.y = 3.1;
   roofWallSen.rotation.x = 240.35;
+  roofWallSen.rotation.y = 3.1;
   roofWallSen.rotation.z = 0.9;
 
   const windowWallGeometry = new THREE.BoxGeometry(1,3,3);
   const windowWallMaterial = new THREE.MeshStandardMaterial({map: darkGreenRoofTexture});
   const windowWall = new THREE.Mesh(windowWallGeometry,windowWallMaterial);
+  windowWall.position.x = 6;
   windowWall.position.y = 24;
   windowWall.position.z = 4;
-  windowWall.position.x = 6;
   windowWall.rotation.y = 2.5;
   windowWall.rotation.z = -1;
-
 
   const WindowSecondFloorGeometry = new THREE.BoxGeometry(1,3,3);
   const WindowSecondFloorMaterial = new THREE.MeshBasicMaterial({map: darkGreenRoofTexture});
   const windowSecondFloor = new THREE.Mesh(WindowSecondFloorGeometry,WindowSecondFloorMaterial);
+  windowSecondFloor.position.x = -1;
   windowSecondFloor.position.y = 15;
   windowSecondFloor.position.z = 8.2;
-  windowSecondFloor.position.x = -1;
   windowSecondFloor.rotation.y = -2.2;
   windowSecondFloor.rotation.z = 1;
-
 
   const doorBoxGeometry = new THREE.BoxGeometry(5,5,5);
   const doorBoxMaterial = new THREE.MeshStandardMaterial({map: bodyHouseTexture});
   const doorBox = new THREE.Mesh(doorBoxGeometry,doorBoxMaterial);
-  doorBox.position.y = 1;
   doorBox.position.x = -3;
+  doorBox.position.y = 1;
   doorBox.position.z = 8.2;
   doorBox.rotation.y = -2.2;
 
   const doorBoxHeadGeometry = new THREE.BoxGeometry(5,1,5);
   const doorBoxHeadMaterial = new THREE.MeshStandardMaterial({map: darkGreenRoofTexture });
   const doorBoxHead = new THREE.Mesh(doorBoxHeadGeometry,doorBoxHeadMaterial);
-  doorBoxHead.position.y = 4;
   doorBoxHead.position.x = -3;
+  doorBoxHead.position.y = 4;
   doorBoxHead.position.z = 8.2;
   doorBoxHead.rotation.y = -2.2;
 
@@ -745,16 +746,15 @@ function house(){
   rectLight.position.set( 4,-8, 3 );
   rectLight.lookAt( 5, 0, 0 );
   scene.add( rectLight )
-
   const windowsLightOn = windows(1,3,3);
-  windowsLightOn.position.y = 4;
   windowsLightOn.position.x = -8;
+  windowsLightOn.position.y = 4;
   windowsLightOn.position.z = 3;
   windowsLightOn.rotation.y = -2.2;
-  const windowsLightOnBorder = windowsBorders(1,4,4);
 
-  windowsLightOnBorder.position.y =4;
+  const windowsLightOnBorder = windowsBorders(1,4,4);
   windowsLightOnBorder.position.x = -7.9;
+  windowsLightOnBorder.position.y =4;
   windowsLightOnBorder.position.z = 3;
   windowsLightOnBorder.rotation.y = -2.2;
 
@@ -762,29 +762,28 @@ function house(){
   secondWindowsLight.position.set( 8, 3, 2.5 );
   scene.add( secondWindowsLight );
   const secondWindowsLightOn = windows(3,2,1);
-  secondWindowsLightOn.position.y = 3;
   secondWindowsLightOn.position.x = 8;
+  secondWindowsLightOn.position.y = 3;
   secondWindowsLightOn.position.z = 2.5;
   secondWindowsLightOn.rotation.y = -2.2;
 
   const secondWindowsLightOnBorder = windowsBorders(4,3,1);
-  secondWindowsLightOnBorder.position.y =3;
   secondWindowsLightOnBorder.position.x =7.8;
+  secondWindowsLightOnBorder.position.y =3;
   secondWindowsLightOnBorder.position.z =2;
   secondWindowsLightOnBorder.rotation.y = -2.2;
 
   const firstFloorWindowLightsOff = windowsnoLights(3,2,1);
-  firstFloorWindowLightsOff.position.y = 2;
   firstFloorWindowLightsOff.position.x = -6.5; 
+  firstFloorWindowLightsOff.position.y = 2;
   firstFloorWindowLightsOff.position.z = -4;
   firstFloorWindowLightsOff.rotation.y = -2.2;
 
-  
   const windowFirstFloorLightsOffGeometry = new THREE.BoxGeometry(3,1,8);
   const windowFirstFloorLightsOffMaterial = new THREE.MeshBasicMaterial({map: darkGreenRoofTexture});
   const windowFirstFloorLightsOff = new THREE.Mesh(windowFirstFloorLightsOffGeometry,windowFirstFloorLightsOffMaterial);
-  windowFirstFloorLightsOff.position.y = 4;
   windowFirstFloorLightsOff.position.x = -7;
+  windowFirstFloorLightsOff.position.y = 4;
   windowFirstFloorLightsOff.position.z = -5;
   windowFirstFloorLightsOff.rotation.y = -3.8;
   windowFirstFloorLightsOff.rotation.z = 2.2;
@@ -792,12 +791,11 @@ function house(){
   const windowSecondFloorNoLightSideGeometry = new THREE.BoxGeometry(3,1,8);
   const windowSecondFloorNoLightSideMaterial = new THREE.MeshBasicMaterial({map: darkGreenRoofTexture});
   const windowSecondFloorNoLightSide = new THREE.Mesh(windowSecondFloorNoLightSideGeometry,windowSecondFloorNoLightSideMaterial);
-  windowSecondFloorNoLightSide.position.y = 15;
   windowSecondFloorNoLightSide.position.x = -6;
+  windowSecondFloorNoLightSide.position.y = 15;
   windowSecondFloorNoLightSide.position.z = -4;
   windowSecondFloorNoLightSide.rotation.y = -3.8;
   windowSecondFloorNoLightSide.rotation.z = 2.2;
-
 
   const secondFloorWindowFrontLightsOff = windowsnoLights(3,2,1);
   secondFloorWindowFrontLightsOff.position.x = -6;
@@ -848,52 +846,51 @@ function house(){
   firstFloorWindowSideBorder.rotation.y = 0.9;
 
   const foundationfirstFloorFrontRight = houseFoundation();
-  foundationfirstFloorFrontRight.position.y = 3.6;
   foundationfirstFloorFrontRight.position.x = 18;
+  foundationfirstFloorFrontRight.position.y = 3.6;
   foundationfirstFloorFrontRight.position.z = -2;
 
   const foundationfirstFloorFrontLeft = houseFoundation();
-  foundationfirstFloorFrontLeft.position.y = 3.5;
   foundationfirstFloorFrontLeft.position.x = 2; 
+  foundationfirstFloorFrontLeft.position.y = 3.5;
   foundationfirstFloorFrontLeft.position.z = 16;
 
   const foundationfirstFloorBackLeft = houseFoundation();
-  foundationfirstFloorBackLeft.position.y = 3.5;
   foundationfirstFloorBackLeft.position.x = -17;
+  foundationfirstFloorBackLeft.position.y = 3.5;
   foundationfirstFloorBackLeft.position.z = 1;
 
  const foundationfirstFloorBackRight = houseFoundation();
-  foundationfirstFloorBackRight.position.y= 3.5;
   foundationfirstFloorBackRight.position.x= -2;
+  foundationfirstFloorBackRight.position.y= 3.5;
   foundationfirstFloorBackRight.position.z = -18.5;
 
   const foundationSecondFloorFrontRight = houseFoundation();
-  foundationSecondFloorFrontRight.position.y = 12.5;
   foundationSecondFloorFrontRight.position.x = 12;
-  foundationSecondFloorFrontRight.position.z = -2;//
+  foundationSecondFloorFrontRight.position.y = 12.5;
+  foundationSecondFloorFrontRight.position.z = -2;
+
   const foundationSecondFloorFrontLeft = houseFoundation();
+  foundationSecondFloorFrontLeft.position.x = 1.7;
   foundationSecondFloorFrontLeft.position.y = 12.5;
   foundationSecondFloorFrontLeft.position.z = 12.2;
-  foundationSecondFloorFrontLeft.position.x = 1.7;
+ 
   const foundationSecondFloorBackRight = houseFoundation();
-  foundationSecondFloorBackRight.position.y = 12.5;
   foundationSecondFloorBackRight.position.x = -12;
+  foundationSecondFloorBackRight.position.y = 12.5;
   foundationSecondFloorBackRight.position.z = 2;
   const foundationSecondFloorBackLeft = houseFoundation();
-  foundationSecondFloorBackLeft.position.y = 12.5;
   foundationSecondFloorBackLeft.position.x = -2;
+  foundationSecondFloorBackLeft.position.y = 12.5;
   foundationSecondFloorBackLeft.position.z = -12;
 
-  
   const doorGeometry = new THREE.BoxGeometry(2.5,5,2);
   const doorMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
   const door = new THREE.Mesh(doorGeometry,doorMaterial);
-  door.position.y = 1;
   door.position.x = -4.9;
+  door.position.y = 1;
   door.position.z = 7.5;
   door.rotation.y = -2.2;
-
-
 
   const boardWoodLink = boardLink(1,1,3);
   boardWoodLink.position.x = -12;
@@ -1152,7 +1149,6 @@ function bigHouse(){
   windowBigHouseLightsOffThirdFirst.position.z = -12;
   windowBigHouseLightsOffThirdFirst.rotation.y = 3.05;
 
-
   const groundBufferBigHouse = bigHouseFlatBuffer(31.5,1,12);
   groundBufferBigHouse.position.x = -53;
   groundBufferBigHouse.position.z = -14;
@@ -1231,9 +1227,9 @@ cloudSecond.position.x = -60;
 cloudSecond.position.z = -15;
 scene.add(cloudSecond);
 
+//lighting
 const allLightsAmbient = new THREE.AmbientLight( 0x000000 ); 
 scene.add( allLightsAmbient );
-
 const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 , 5);
 directionalLight.position.set(-15,30,-20);
 scene.add( directionalLight );
@@ -1241,6 +1237,7 @@ const aboveLight = new THREE.HemisphereLight( 0x000000, 0x6495ed, 0.7 );
 scene.add( aboveLight );
 function animate() {
   requestAnimationFrame(animate);
+  
   cloud.position.x += 0.09;
   cloudSecond.position.x += 0.09;
   if(cloud.position.x > 100){
