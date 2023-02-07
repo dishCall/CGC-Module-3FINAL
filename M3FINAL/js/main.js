@@ -87,7 +87,6 @@ function grass(height,width,depth){
 }
 
 function electricPole(radi,length){
-
   const poleGeometry = new THREE.CapsuleGeometry(radi,length,8,8);
   const poleMaterial = new THREE.MeshStandardMaterial({color: 'rgb(245,200,79)'});
   const pole = new THREE.Mesh(poleGeometry,poleMaterial);
@@ -125,7 +124,6 @@ function cityWall(height,width,depth){
   return cityWall;
 }
 function cityWallRoof(height,width,depth){
-  //light brownish texture
   const cityWallRoofGeometry = new THREE.BoxGeometry(height,width,depth);
   const cityWallRoofMaterial = new THREE.MeshStandardMaterial({color: 'rgb(255,178,102)'});
   const cityWallRoof = new THREE.Mesh(cityWallRoofGeometry,cityWallRoofMaterial);
@@ -218,7 +216,6 @@ function windowsnoLights(height,width,depth){
   return windowsnoLights;
 }
 function bigHouseBlocks(height,width,depth){
-  //add light wooden texture
   const bigHouseBlockGeometry = new THREE.BoxGeometry(height,width,depth);
   const bigHouseBlockMaterial = new THREE.MeshBasicMaterial({color: 'rgb(239,226,195)'})
   const bigHouseBlock = new THREE.Mesh(bigHouseBlockGeometry,bigHouseBlockMaterial);
@@ -237,14 +234,16 @@ function wallBigHouseDoor(height,width,depth){
   return wallBigHouseDoors;
 }
 function logo(height,width,depth){
+  const logoRellcoinTexture = new THREE.TextureLoader().load("./assets/textures/rellcoinlogo.jpg");
   const logoShindoGeometry = new THREE.BoxGeometry(height,width,depth);
-  const logoShindoMaterial = new THREE.MeshBasicMaterial({color:'gray'});
+  const logoShindoMaterial = new THREE.MeshBasicMaterial({map: logoRellcoinTexture});
   const logoShindo = new THREE.Mesh(logoShindoGeometry,logoShindoMaterial);
   return logoShindo;
 }
 function RoofbigHouse(){
+  const roofBigHouseTexture = new THREE.TextureLoader().load("./assets/textures/bighouseroof.jpg")
   const bigHouseRoofGeometry = new THREE.CylinderGeometry(3,4,2,4);
-  const bighouseRoofMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
+  const bighouseRoofMaterial = new THREE.MeshBasicMaterial({map: roofBigHouseTexture});
   const bigHouseRoof = new THREE.Mesh(bigHouseRoofGeometry,bighouseRoofMaterial);
   return bigHouseRoof;
 }
@@ -722,17 +721,17 @@ function house(){
   windowSecondFloor.rotation.y = -2.2;
   windowSecondFloor.rotation.z = 1;
 
-  //light brown texture
+
   const doorBoxGeometry = new THREE.BoxGeometry(5,5,5);
-  const doorBoxMaterial = new THREE.MeshBasicMaterial({color: 'gray'});
+  const doorBoxMaterial = new THREE.MeshStandardMaterial({map: bodyHouseTexture});
   const doorBox = new THREE.Mesh(doorBoxGeometry,doorBoxMaterial);
   doorBox.position.y = 1;
   doorBox.position.x = -3;
   doorBox.position.z = 8.2;
   doorBox.rotation.y = -2.2;
-  //dark green texture
+
   const doorBoxHeadGeometry = new THREE.BoxGeometry(5,1,5);
-  const doorBoxHeadMaterial = new THREE.MeshBasicMaterial({color: 'green'});
+  const doorBoxHeadMaterial = new THREE.MeshStandardMaterial({map: darkGreenRoofTexture });
   const doorBoxHead = new THREE.Mesh(doorBoxHeadGeometry,doorBoxHeadMaterial);
   doorBoxHead.position.y = 4;
   doorBoxHead.position.x = -3;
