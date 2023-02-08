@@ -57,30 +57,35 @@ function electricPole(radi,length){
   const pole = new THREE.Mesh(poleGeometry,poleMaterial);
   return pole; 
 }
+
 function electricLightsPole(radi,length){
   const lightsPoleGeometry = new THREE.CapsuleGeometry(radi,length,8,8);
   const lightsPoleMaterial = new THREE.MeshStandardMaterial({color: 'rgb(159,131,52)'});
   const lightsPole = new THREE.Mesh(lightsPoleGeometry,lightsPoleMaterial);
   return lightsPole; 
 }
+
 function PoleLight(radiTop,radiBottom,height){
   const PoleLightBulbGeometry = new THREE.CylinderGeometry(radiTop,radiBottom,height,8,1);
   const PoleLightBulbMaterial = new THREE.MeshStandardMaterial({color: 'rgb(159,131,52)'});
   const PoleLightBulb = new THREE.Mesh(PoleLightBulbGeometry,PoleLightBulbMaterial);
   return PoleLightBulb;
 }
+
 function boardSignBorder(height,width,depth){
   const signBoardBorderGeometry = new THREE.BoxGeometry(height,width,depth);
   const signBoardBorderMaterial = new THREE.MeshStandardMaterial({color: 'rgb(161,118,0)'});
   const signBoardBorder = new THREE.Mesh(signBoardBorderGeometry,signBoardBorderMaterial);
   return signBoardBorder;
 }
+
 function boardLink(height,width,depth){
   const boardLinkWoodGeometry = new THREE.BoxGeometry(height,width,depth);
   const boardLinkWoodMaterial = new THREE.MeshStandardMaterial({color: 'rgb(161,118,0)'});
   const boardLinkWood = new THREE.Mesh(boardLinkWoodGeometry,boardLinkWoodMaterial);
   return boardLinkWood;
 }
+
 function cityWall(height,width,depth){
   const cityWallTexture = new THREE.TextureLoader().load("./assets/textures/lightbrownwall.jpeg");
   const cityWallGeometry = new THREE.BoxGeometry(height,width,depth);
@@ -88,12 +93,14 @@ function cityWall(height,width,depth){
   const cityWall = new THREE.Mesh(cityWallGeometry,cityWallMaterial);
   return cityWall;
 }
+
 function cityWallRoof(height,width,depth){
   const cityWallRoofGeometry = new THREE.BoxGeometry(height,width,depth);
   const cityWallRoofMaterial = new THREE.MeshStandardMaterial({color: 'rgb(255,178,102)'});
   const cityWallRoof = new THREE.Mesh(cityWallRoofGeometry,cityWallRoofMaterial);
   return cityWallRoof
 }
+
 function wallTubes(radi,length,capSegment){
   const cityTubeTexture = new THREE.TextureLoader().load("./assets/textures/stone.jpg");
   const wallTubesGeometry = new THREE.CapsuleGeometry(radi,length,capSegment);
@@ -101,6 +108,7 @@ function wallTubes(radi,length,capSegment){
   const wallTubes = new THREE.Mesh(wallTubesGeometry,wallTubesMaterial);
   return wallTubes;
 }
+
 function road(height,width,depth){
   const roadTexture = new THREE.TextureLoader().load("./assets/textures/road.jpg");
   const roadGeometry = new THREE.BoxGeometry(height,width,depth);
@@ -108,12 +116,14 @@ function road(height,width,depth){
   const road = new THREE.Mesh(roadGeometry,roadMaterial);
   return road;
 }
+
 function roadBump(height,width,depth){
   const roadBumpGeometry = new THREE.BoxGeometry(height,width,depth);
   const roadBumpMaterial = new THREE.MeshStandardMaterial({color: 'gray'})
   const roadBump = new THREE.Mesh(roadBumpGeometry,roadBumpMaterial);
   return roadBump;
 }
+
 function fence(height,width,depth){
   const fenceTexture = new THREE.TextureLoader().load("./assets/textures/fence.jpg");
   const fenceGeometry = new THREE.BoxGeometry(height,width,depth);
@@ -121,12 +131,14 @@ function fence(height,width,depth){
   const fence = new THREE.Mesh(fenceGeometry,fenceMaterial);
   return fence;
 }
+
 function treeWood(height,width,depth){
   const treeWoodGeometry = new THREE.BoxGeometry(height,width,depth);
   const treeWoodMaterial = new THREE.MeshStandardMaterial({color: 'rgb(101,80,24)'});
   const treeWood = new THREE.Mesh(treeWoodGeometry,treeWoodMaterial);
   return treeWood;
 }
+
 function treeWoodLeaf(height,width,depth){
   const treeWoodLeafTextures = new THREE.TextureLoader().load('./assets/textures/leaf.jpg');
   const treeWoodLeafGeometry = new THREE.BoxGeometry(height,width,depth);
@@ -134,12 +146,14 @@ function treeWoodLeaf(height,width,depth){
   const treeWoodLeaf = new THREE.Mesh(treeWoodLeafGeometry,treeWoodLeafMaterial);
   return treeWoodLeaf;
 }
+
 function treeWoodLeafSnow(height,width,depth){
   const treeWoodLeafSnowGeometry = new THREE.BoxGeometry(height,width,depth);
   const treeWoodLeafSnowMaterial = new THREE.MeshBasicMaterial({color:'rgb(196,195,195)'});
   const treeWoodLeafSnow = new THREE.Mesh(treeWoodLeafSnowGeometry,treeWoodLeafSnowMaterial);
   return treeWoodLeafSnow;
 }
+
 function houseFoundation(){
   const stoneTexture = new THREE.TextureLoader().load("./assets/textures/foundation-stone.jpg")
   const foundationGeometry = new THREE.CapsuleGeometry(1,7,1,4);
@@ -147,6 +161,7 @@ function houseFoundation(){
   const foundation = new THREE.Mesh(foundationGeometry,foundationMaterial);
   return foundation;
 }
+
 function houseRoofUpper(){
   const roofTexture = new THREE.TextureLoader().load("./assets/textures/lightbrownwall.jpeg");
   const upperRoofGeometry = new THREE.CylinderGeometry(7,7,12,3,1);
@@ -168,36 +183,42 @@ function windowsBorders(height,width,depth){
   const windowsBorder = new THREE.Mesh(windowBorderGeometry,windowBorderMaterials);
   return windowsBorder;
 }
+
 function windowsBordersBigHouse(height,width,depth){
   const windowBorderBigHouseGeometry = new THREE.BoxGeometry(height,width,depth);
   const windowBorderBigHouseMaterials = new THREE.MeshBasicMaterial({color: 'rgb(74,59,24)'});
   const windowsBigHouseBorder = new THREE.Mesh(windowBorderBigHouseGeometry,windowBorderBigHouseMaterials);
   return windowsBigHouseBorder;
 }
+
 function windowsnoLights(height,width,depth){
   const windowNoLightsGeometry = new THREE.BoxGeometry(height,width,depth);
   const windowNoLightsMaterial = new THREE.MeshBasicMaterial({color: 'black'});
   const windowsnoLights = new THREE.Mesh(windowNoLightsGeometry,windowNoLightsMaterial);
   return windowsnoLights;
 }
+
 function bigHouseBlocks(height,width,depth){
   const bigHouseBlockGeometry = new THREE.BoxGeometry(height,width,depth);
   const bigHouseBlockMaterial = new THREE.MeshBasicMaterial({color: 'rgb(239,226,195)'})
   const bigHouseBlock = new THREE.Mesh(bigHouseBlockGeometry,bigHouseBlockMaterial);
   return bigHouseBlock;
 }
+
 function bigHouseFlatBuffer(height,width,depth){
   const bigHouseBufferGeometry = new THREE.BoxGeometry(height,width,depth);
   const bigHouseBufferMaterial = new THREE.MeshBasicMaterial({color: 'rgb(26,84,36)'});
   const bigHouseBuffer = new THREE.Mesh(bigHouseBufferGeometry,bigHouseBufferMaterial);
   return bigHouseBuffer;
 }
+
 function wallBigHouseDoor(height,width,depth){
   const wallBigHouseDoorGeometry = new THREE.BoxGeometry(height,width,depth);
   const wallBigHouseDoorMaterial = new THREE.MeshBasicMaterial({color: 'brown'});
   const wallBigHouseDoors = new THREE.Mesh(wallBigHouseDoorGeometry,wallBigHouseDoorMaterial);
   return wallBigHouseDoors;
 }
+
 function logo(height,width,depth){
   const logoRellcoinTexture = new THREE.TextureLoader().load("./assets/textures/rellcoinlogo.jpg");
   const logoShindoGeometry = new THREE.BoxGeometry(height,width,depth);
@@ -205,6 +226,7 @@ function logo(height,width,depth){
   const logoShindo = new THREE.Mesh(logoShindoGeometry,logoShindoMaterial);
   return logoShindo;
 }
+
 function RoofbigHouse(){
   const roofBigHouseTexture = new THREE.TextureLoader().load("./assets/textures/bighouseroof.jpg")
   const bigHouseRoofGeometry = new THREE.CylinderGeometry(3,4,2,4);
@@ -252,6 +274,7 @@ function terrainBuild(){
   scene.add(terrainGroup);
 
 }
+
 function treeBuild(){
   const treeBuilding = new THREE.Group();
 
@@ -359,6 +382,7 @@ function treeBuild(){
   treeBuilding.position.y = 19;
   
 }
+
 function roadBuild(){
   const roads = new THREE.Group();
 
@@ -427,6 +451,7 @@ function roadBuild(){
   roads.position.z = 2;
   scene.add(roads);
 }
+
 function fenceBuild(){
   const fenceGroup = new THREE.Group();
 
@@ -475,6 +500,7 @@ function fenceBuild(){
   scene.add(fenceGroup);
   fenceGroup.position.y = 19;
 }
+
 function electricPoleBuild(){
 const electricPoleGroup = new THREE.Group();
 
@@ -557,6 +583,7 @@ scene.add( poleLighting );
 scene.add( poleLightingNearBigHouse );
 electricPoleGroup.position.y = 19;
 }
+
 function wallBuild(){
   const wallBuilding = new THREE.Group();
 
@@ -662,6 +689,7 @@ function wallBuild(){
   wallBuilding.position.y = 19;
 
 }
+
 //house Right Side
 function houseBuild(){
   const houseGroup = new THREE.Group();
@@ -952,6 +980,7 @@ function houseBuild(){
   
   scene.add(houseGroup);
 }
+
 //house Left Side
 function bigHouse(){
   const bigHouseBuilding = new THREE.Group();
@@ -1213,7 +1242,7 @@ function bigHouse(){
   bigHouseBuilding.position.y = 19;
 }
 
-//cloud animation and Cloud
+//Cloud
 const cloudGeometry = new THREE.BoxGeometry(30,10,20);
 const cloudMaterial = new THREE.MeshBasicMaterial({color: 'white'});
 const cloud = new THREE.Mesh(cloudGeometry,cloudMaterial);
@@ -1227,7 +1256,7 @@ cloudSecond.position.x = -60;
 cloudSecond.position.z = -15;
 scene.add(cloudSecond);
 
-//lighting
+//environment lighting
 const allLightsAmbient = new THREE.AmbientLight( 0x000000 ); 
 scene.add( allLightsAmbient );
 const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 , 5);
