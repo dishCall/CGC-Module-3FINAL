@@ -7,11 +7,13 @@ document.body.appendChild( renderer.domElement );
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
 const controls = new OrbitControls( camera, renderer.domElement );
-camera.position.set( 0, 20, 100 );
+camera.position.set( -80, 70, 10 );
+camera.lookAt(-100,20,20);
+let snows, snowGeo;
 controls.update();
 
 //recreation build
-firstLayer(500,1,500);
+firstLayer(120,1,110);
 roadBuild();
 fenceBuild();
 treeBuild();
@@ -20,6 +22,7 @@ electricPoleBuild();
 houseBuild();
 bigHouse();
 terrainBuild();
+particles();
 
 
 function firstLayer(height,width,depth){
@@ -27,7 +30,8 @@ const lowerLayerGeometry = new THREE.BoxGeometry(height,width,depth);
 const lowerLayerMaterial = new THREE.MeshBasicMaterial({color: 'green'});
 const lowerLayer = new THREE.Mesh(lowerLayerGeometry,lowerLayerMaterial);
 scene.add(lowerLayer);
-lowerLayer.position.z = 5;
+lowerLayer.position.z = -10;
+lowerLayer.position.x = -25;
 return lowerLayer;
 }
 
@@ -235,7 +239,7 @@ function RoofbigHouse(){
   return bigHouseRoof;
 }
 
-function terrainBuild(){
+function terrainBuild(){  
   const terrainGroup = new THREE.Group();
   const terrainRight = secondLayerTerrain(55,20,40);
   terrainRight.position.x = -4;
@@ -1240,6 +1244,33 @@ function bigHouse(){
   bigHouseBuilding.add(logoShindoBigHouseBillBoard);
   scene.add(bigHouseBuilding);
   bigHouseBuilding.position.y = 19;
+}
+
+function particles() {
+  const points = [];
+
+  for (let i = 0; i < 3000; i++) {
+    let snow = new THREE.Vector3(
+      Math.random() * 120 - 10,
+      Math.random() * 80 - 10,
+      Math.random() * 95 - 10
+    );
+    points.push(snow);
+  }
+
+  snowGeo = new THREE.BufferGeometry().setFromPoints(points);
+
+  let snowSprite = new THREE.TextureLoader().load("./assets/images/snow.png");
+  let snowGeometry = new THREE.PointsMaterial({
+    size: 0.7,
+    map: snowSprite
+  });
+
+  snows = new THREE.Points(snowGeo, snowGeometry);
+  scene.add(snows);
+  snows.position.x = -75;
+  snows.position.y = 7;
+  snows.position.z = -48;
 }
 
 //Cloud
