@@ -501,17 +501,17 @@ electricLightsPoleTopMiddle.position.y =  12;
 electricLightsPoleTopMiddle.position.z = -8;
 electricLightsPoleTopMiddle.rotation.z = 7.9;
 
-const electricLightbulb = PoleLight(3,5,10);
-electricLightbulb.position.x = -23.2;
-electricLightbulb.position.y = 12;
-electricLightbulb.position.z = -8;
-electricLightbulb.scale.set(0.2,0.2,0.2);
-
 const poleLighting = new THREE.PointLight( 0xff0000, 2.5, 60 );
 poleLighting.position.set( -23.2, 11, -8 );
 const electricPoleNearBigHouse = electricPole(0.5,22);
 electricPoleNearBigHouse.position.x = -43;
 electricPoleNearBigHouse.position.z = 9.2;
+
+const electricLightbulb = PoleLight(3,5,10);
+electricLightbulb.position.x = -23.2;
+electricLightbulb.position.y = 12;
+electricLightbulb.position.z = -8;
+electricLightbulb.scale.set(0.2,0.2,0.2);
 
 const electricPoleNearBigHouseTop = electricPole(0.5,6);
 electricPoleNearBigHouseTop.position.x = -42.87;
@@ -534,13 +534,13 @@ electricLightPoleNearBigHouse.position.z = 5.5;
 electricLightPoleNearBigHouse.rotation.x = 1.5;
 electricLightPoleNearBigHouse.rotation.y = 3.5;
 
+const poleLightingNearBigHouse = new THREE.PointLight( 0xff0000, 2.5, 60 );
+poleLightingNearBigHouse.position.set( -42.87, 8.5, 1.5 );
 const electricLightbulbPoleNearBigHouse = PoleLight(3,5,10);
 electricLightbulbPoleNearBigHouse.position.x = -42.87;
 electricLightbulbPoleNearBigHouse.position.y = 8.5;
 electricLightbulbPoleNearBigHouse.position.z = 1.5;
 electricLightbulbPoleNearBigHouse.scale.set(0.2,0.2,0.2);
-const poleLightingNearBigHouse = new THREE.PointLight( 0xff0000, 2.5, 60 );
-poleLightingNearBigHouse.position.set( -42.87, 8.5, 1.5 );
 
 electricPoleGroup.add(electricLightbulbPoleNearBigHouse)
 electricPoleGroup.add(electricLightPoleNearBigHouse);
